@@ -1,0 +1,29 @@
+{
+  "hash": "213aec76",
+  "browserHash": "49c2de2a",
+  "optimized": {
+    "vue": {
+      "src": "../../../node_modules/.pnpm/vue@3.2.47/node_modules/vue/dist/vue.runtime.esm-bundler.js",
+      "file": "vue.js",
+      "fileHash": "6f63ada6",
+      "needsInterop": false
+    },
+    "@vueuse/core": {
+      "src": "../../../node_modules/.pnpm/@vueuse+core@9.12.0_vue@3.2.47/node_modules/@vueuse/core/index.mjs",
+      "file": "@vueuse_core.js",
+      "fileHash": "706a1d04",
+      "needsInterop": false
+    },
+    "axios": {
+      "src": "../../../../../../node_modules/.pnpm/axios@1.3.2/node_modules/axios/index.js",
+      "file": "axios.js",
+      "fileHash": "0885c944",
+      "needsInterop": false
+    }
+  },
+  "chunks": {
+    "chunk-GOZHMCMR": {
+      "file": "chunk-GOZHMCMR.js"
+    }
+  }
+}

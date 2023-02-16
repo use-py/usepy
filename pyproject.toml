@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "usepy"
+version = "0.1.22"
+description = "usepy"
+authors = ["miclon <jcnd@163.com>"]
+packages = [
+    { include = 'usepy', from = 'src' }
+]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+
+
+[tool.poetry.group.test.dependencies]
+pytest = "^7.2.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
