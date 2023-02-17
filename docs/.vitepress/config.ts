@@ -42,7 +42,7 @@ export default withPwa(defineConfig({
     },
   },
   themeConfig: {
-    logo: '/logo.svg',
+    logo: '/logo.png',
 
     editLink: {
       pattern: 'https://github.com/mic1on/usepy/tree/main/docs/:path',
@@ -58,19 +58,12 @@ export default withPwa(defineConfig({
       // },
     },
 
-    localeLinks: {
-      text: 'English',
-      items: [
-        { text: '简体中文', link: 'https://cn.vitest.dev' },
-      ],
-    },
-
     socialLinks: [
       { icon: 'github', link: github },
     ],
 
     footer: {
-      message: 'Released under the MIT License.',
+      message: 'Released under the MIT License. Based on Vitest.',
       copyright: 'Copyright © 2023 MicLon',
     },
 
@@ -82,7 +75,7 @@ export default withPwa(defineConfig({
     sidebar: {
       '/': [
         {
-          text: 'Guide',
+          text: '指南',
           items: [
             {
               text: '快速开始',

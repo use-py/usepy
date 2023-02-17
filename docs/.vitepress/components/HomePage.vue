@@ -7,9 +7,9 @@
     <div class="content-container">
       <main class="main">
         <div class="vp-doc" flex flex-col items-center mt-10>
-          123
+
         </div>
       </main>
     </div>
-  </div>
+</div>
 </template>

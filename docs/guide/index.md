@@ -1,5 +1,5 @@
 ---
-title: get started | Guide
+title: 快速开始 | 指南
 ---
 
 # 快速开始
