@@ -111,7 +111,16 @@ export default withPwa(defineConfig({
               link: '/api/decorator',
             },
           ],
-        }
+        },
+        {
+          text: 'Utils',
+          items: [
+            {
+              text: 'useTimer',
+              link: '/utils/timer',
+            }
+          ],
+        },
       ],
     },
   },

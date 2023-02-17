@@ -20,6 +20,9 @@ hero:
       text: 功能特性
       link: /guide/features
     - theme: alt
+      text: View on PyPI
+      link: https://pypi.org/project/usepy/
+    - theme: alt
       text: View on GitHub
       link: https://github.com/mic1on/UsePy
 
