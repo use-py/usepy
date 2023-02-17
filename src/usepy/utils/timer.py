@@ -3,6 +3,7 @@
 定时器及定时器管理器
 """
 import threading
+from typing import Dict
 
 
 class Timer(object):
@@ -119,14 +120,23 @@ class Timer(object):
 
 class TimerManager(object):
     def __init__(self, ):
-        self._timers_container = {}
+        self._timers_container: Dict[str, Timer] = {}
         self._executed = False
 
-    def all_timers(self):
+    def all_timers(self) -> Dict[str, Timer]:
         return self._timers_container
 
-    def add_timer(self, timer):
-        self._timers_container[timer.name] = timer
+    def add_timer(self, *timer: Timer) -> 'TimerManager':
+        """
+        add timer to manager
+        :param timer: Timer
+        :return:
+        """
+        for timer in timer:
+            if not isinstance(timer, Timer):
+                raise TypeError("timer must be Timer instance")
+
+            self._timers_container[timer.name] = timer
         return self
 
     def execute(self):
@@ -142,7 +152,7 @@ class TimerManager(object):
             timer.scheduler()
         self._executed = True
 
-    def cancel_timer(self, timer_name=None, ):
+    def cancel_timer(self, timer_name=None):
         """
         cancel timer , and   timer still in container
         it can execute again.
