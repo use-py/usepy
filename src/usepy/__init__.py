@@ -26,6 +26,8 @@ from .utils import (
 )
 from ._datetime import useDateTime
 
+from ._path import usePath
+
 __all__ = [
     # data
     'useDict',
@@ -51,5 +53,6 @@ __all__ = [
     'useCookieToDict',
     'useHeadersToDict',
 
-    'useDateTime'
+    'useDateTime',
+    'usePath'
 ]
