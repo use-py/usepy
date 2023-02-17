@@ -1,6 +1,8 @@
-# Decorator
+# useDecorator
 
+::: tip
 python中常用的装饰器。
+:::
 
 ## useSingleton
 

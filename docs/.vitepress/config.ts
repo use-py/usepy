@@ -87,11 +87,27 @@ export default withPwa(defineConfig({
           text: 'API',
           items: [
             {
-              text: 'Data',
-              link: '/api/',
+              text: 'useDict',
+              link: '/api/dict',
             },
             {
-              text: 'Decorator',
+              text: 'useList',
+              link: '/api/list',
+            },
+            {
+              text: 'useString',
+              link: '/api/string',
+            },
+            {
+              text: 'useDateTime',
+              link: '/api/datetime',
+            }, 
+            {
+              text: 'usePath',
+              link: '/api/path',
+            },
+            {
+              text: 'useDecorator',
               link: '/api/decorator',
             },
           ],
