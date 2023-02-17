@@ -49,6 +49,10 @@ class UseDateTime:
         :param dt: 时间，默认当前时间
         :param digit: 位数
         :return: 时间戳
+        >>> UseDateTime.timestamp()
+        1600000000
+        >>> UseDateTime.timestamp(digit=13)
+        1600000000000
         """
         if not dt:
             dt = datetime.now()
