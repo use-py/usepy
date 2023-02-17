@@ -1,4 +1,5 @@
 from collections import defaultdict
+from copy import deepcopy
 from typing import List, Dict
 
 
@@ -88,3 +89,31 @@ class UseDict:
             for key in d:
                 res[key].append(d[key])
         return dict(res)
+
+    @staticmethod
+    def deep_update(main_dict: Dict, update_dict: Dict) -> None:
+        """
+        深度更新字典
+        :param main_dict: 原始字典
+        :param update_dict: 新字典
+        :return: 更新后的字典
+        >>> dict1 = {'a': {'b': 1}}
+        >>> UseDict.deep_update(dict1, {'a': {'c': 2}})
+        >>> assert dict1 == {'a': {'b': 1, 'c': 2}}
+        """
+        for key, value in update_dict.items():
+            if (
+                    key in main_dict
+                    and isinstance(main_dict[key], dict)
+                    and isinstance(value, dict)
+            ):
+                UseDict.deep_update(main_dict[key], value)
+            elif (
+                    key in main_dict
+                    and isinstance(main_dict[key], list)
+                    and isinstance(update_dict[key], list)
+            ):
+                main_dict[key] = main_dict[key] + update_dict[key]
+            else:
+                main_dict[key] = value
+        return main_dict
