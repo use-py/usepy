@@ -11,13 +11,13 @@ export const gstatic = 'https://fonts.gstatic.com'
 export const font = `${googleapis}/css2?family=Readex+Pro:wght@200;400;600&display=swap`
 
 /* vitepress head */
-export const ogUrl = 'https://vitest.dev/'
+export const ogUrl = 'https://code05.com/'
 export const ogImage = `${ogUrl}og.png`
 
 /* GitHub and social links */
 export const github = 'https://github.com/mic1on/usepy'
+export const blog = 'https://code05.com'
 export const releases = 'https://github.com/mic1on/usepy/releases'
-export const contributing = 'https://github.com/vitest-dev/vitest/blob/main/CONTRIBUTING.md'
 
 /* Avatar/Image/Sponsors servers */
 export const preconnectLinks = [googleapis, gstatic]
