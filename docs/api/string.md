@@ -199,7 +199,7 @@ def reverse(original_str: str) -> str:
 
 ### encode
 
-自定义秘密加密字符串。
+自定义密码加密字符串。
 
 ```python
 def encode(original_str: str, key: str) -> str:
