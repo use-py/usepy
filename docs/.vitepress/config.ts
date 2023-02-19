@@ -122,6 +122,14 @@ export default withPwa(defineConfig({
             {
               text: 'useTimer',
               link: '/utils/timer',
+            },
+            {
+              text: 'useIs',
+              link: '/utils/is',
+            },
+            {
+              text: 'useTo',
+              link: '/utils/to',
             }
           ],
         },
