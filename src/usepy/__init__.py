@@ -11,7 +11,8 @@ from .decorator import (
     useRunInThread,
     useCatchError,
     useExceptDebug,
-    useListify
+    useListify,
+    useCachedProperty,
 )
 from .utils import (
     useTimer,
@@ -24,6 +25,8 @@ from .utils import (
     useCookieToDict,
     useHeadersToDict
 )
+from .utils import useIs, useTo
+
 from ._datetime import useDateTime
 
 from ._path import usePath
@@ -43,6 +46,8 @@ __all__ = [
     'useExceptDebug',
     'useListify',
     # utils
+    'useIs',
+    'useTo',
     'useTimer',
     'useTimerManager',
     'useUserAgent',
