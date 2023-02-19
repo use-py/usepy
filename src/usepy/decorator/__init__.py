@@ -4,6 +4,7 @@ from .catch_error import catch_error as useCatchError
 from .except_debug import except_debug as useExceptDebug
 from .run_in_thread import run_in_thread as useRunInThread
 from .listify import listify as useListify
+from .cache import cached_property as useCachedProperty
 
 
 class Decorator:
@@ -13,6 +14,7 @@ class Decorator:
     except_debug = useExceptDebug
     run_in_thread = useRunInThread
     listify = useListify
+    cached_property = useCachedProperty
 
 
 useDecorator = Decorator
