@@ -14,6 +14,7 @@
 """
 import functools
 import importlib
+from types import ModuleType
 
 
 def import_object(value: str):
@@ -36,14 +37,25 @@ def import_object(value: str):
     return module, None
 
 
-class LazyImport(object):
-    def __init__(self, name):
-        self.cache = {}
-        self.mod_name = name
+class LazyImport(ModuleType):
+    def __init__(self, name, module_globals=None):
+        if module_globals is None:
+            module_globals = globals()
+        self._mod_name = name
+        self._module_globals = module_globals
+        super(LazyImport, self).__init__(name)
 
-    def __getattr__(self, name):
-        mod = self.cache.get(self.mod_name)
-        if not mod:
-            mod = importlib.import_module(self.mod_name)
-            self.cache[self.mod_name] = mod
-        return getattr(mod, name)
+    def _load(self):
+        module = importlib.import_module(self.__name__)
+        self._module_globals[self._mod_name] = module
+        self.__dict__.update(module.__dict__)
+        return module
+
+    def __getattr__(self, item):
+        return getattr(self._load(), item)
+
+    def __dir__(self):
+        return dir(self._load())
+
+    def __repr__(self):
+        return f"<LazyImport {self.__name__}>"
