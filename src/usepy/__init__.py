@@ -25,7 +25,7 @@ from .utils import (
     useCookieToDict,
     useHeadersToDict
 )
-from .utils import useIs, useTo
+from .utils import useIs, useTo, utils as uesUtils
 
 from ._datetime import useDateTime
 

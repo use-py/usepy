@@ -6,7 +6,7 @@
 import re
 
 
-def is_token(value) -> bool:
+def token(value) -> bool:
     """
     检查`value`是否符合token规范
     :param value: 要检查的值
@@ -15,7 +15,7 @@ def is_token(value) -> bool:
     return bool(re.match('^[A-Za-z0-9]{3,32}$', value))
 
 
-def is_string(value) -> bool:
+def string(value) -> bool:
     """
     检查`value`是否是字符串
     :param value: 要检查的值
@@ -24,7 +24,7 @@ def is_string(value) -> bool:
     return isinstance(value, (str, bytes))
 
 
-def is_regexp(value) -> bool:
+def regexp(value) -> bool:
     """
     检查`value`是否是正则表达式
     :param value: 要检查的值
