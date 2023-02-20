@@ -1,3 +1,7 @@
+---
+outline: deep
+---
+
 ::: info
 
     @Author: MicLon
@@ -8,10 +12,10 @@
 
 
 
-## is_regexp
+## regexp
 检查`value`是否是正则表达式
 ```python
-def is_regexp(value):
+def regexp(value):
     """
     检查`value`是否是正则表达式
 	:param value: 要检查的值
@@ -20,10 +24,10 @@ def is_regexp(value):
     ...
     
 ```
-## is_string
+## string
 检查`value`是否是字符串
 ```python
-def is_string(value):
+def string(value):
     """
     检查`value`是否是字符串
 	:param value: 要检查的值
@@ -32,10 +36,10 @@ def is_string(value):
     ...
     
 ```
-## is_token
+## token
 检查`value`是否符合token规范
 ```python
-def is_token(value):
+def token(value):
     """
     检查`value`是否符合token规范
 	:param value: 要检查的值
