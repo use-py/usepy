@@ -8,5 +8,6 @@ from .utils import (
     headers_to_dict as useHeadersToDict,
     data_to_dict as useDataToDict,
 )
+from .html import clean_html as useCleanHtml
 from . import _to as useTo
 from . import _is as useIs

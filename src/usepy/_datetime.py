@@ -62,7 +62,7 @@ class UseDateTime:
     @staticmethod
     def last(dt: datetime, unit: UnitType) -> datetime:
         """
-        获取最后一天/一年/一月/一周/一小时/一分钟/一秒
+        获取最后一天/一年/一月/一小时/一分钟/一秒
         :param dt: 时间
         :param unit:
         :return: 时间
@@ -81,7 +81,7 @@ class UseDateTime:
     @staticmethod
     def first(dt: datetime, unit: UnitType) -> datetime:
         """
-        获取第一天/一年/一月/一周/一小时/一分钟/一秒
+        获取第一天/一年/一月/一小时/一分钟/一秒
         :param dt: 时间
         :param unit:
         :return: 时间
