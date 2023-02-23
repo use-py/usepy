@@ -23,7 +23,8 @@ from .utils import (
     useUniqueId,
     useDataToDict,
     useCookieToDict,
-    useHeadersToDict
+    useHeadersToDict,
+    useCleanHtml
 )
 from .utils import useIs, useTo, utils as uesUtils
 
@@ -57,6 +58,7 @@ __all__ = [
     'useDataToDict',
     'useCookieToDict',
     'useHeadersToDict',
+    'useCleanHtml',
 
     'useDateTime',
     'usePath'
