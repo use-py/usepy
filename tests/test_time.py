@@ -16,3 +16,8 @@ def test_format():
 
 def test_timestamp():
     assert useDateTime.timestamp(datetime(2022, 2, 1, 0, 0, 0, tzinfo=timezone.utc)) == 1643673600
+
+
+def test_format_now():
+    assert useDateTime.format_now() == useDateTime.format(datetime.now())
+    assert useDateTime.format_now(fmt="%Y-%m-%d") == useDateTime.format(datetime.now(), "%Y-%m-%d")
