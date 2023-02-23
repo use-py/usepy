@@ -57,7 +57,7 @@ class UseDateTime:
         """
         return datetime.now()
 
-    format_now = staticmethod(lambda fmt: UseDateTime.format(UseDateTime.now(), fmt))
+    format_now = staticmethod(lambda fmt=None: UseDateTime.format(UseDateTime.now(), fmt))
 
     @staticmethod
     def last(dt: datetime, unit: UnitType) -> datetime:

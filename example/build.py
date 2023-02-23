@@ -1,7 +1,7 @@
 from docstring_parser import parse
 import inspect
 
-from usepy import useIs, useTo
+from usepy import useIs, useTo, uesUtils
 
 
 # 获取模块中所有方法
@@ -69,4 +69,4 @@ def build_module_doc(module):
 
 
 if __name__ == '__main__':
-    build_module_doc(useTo)
+    build_module_doc(useIs)
