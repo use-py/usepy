@@ -27,12 +27,12 @@ hero:
       link: https://github.com/mic1on/UsePy
 
 features:
-  - title: Vite Powered
-    details: Reuse Vite's config, transformers, resolvers, and plugins - consistent across your app and tests.
-  - title: Jest Compatible
-    details: Expect, snapshot, coverage, and more - migrating from Jest is straightforward.
-  - title: Smart & instant watch mode
-    details: Only rerun the related changes, just like HMR for tests!
-  - title: ESM, TypeScript, JSX
-    details: Out-of-box ESM, TypeScript and JSX support powered by esbuild
+  - title: 单测全覆盖
+    details: 你use的方法，都有单测覆盖。
+  - title: 0依赖
+    details: 你use的方法，都是基于标准库。
+  - title: 简单方便
+    details: from usepy import use*
+  - title: 超多方法
+    details: 你想要的方法，都在这里。
 ---

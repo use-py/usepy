@@ -69,3 +69,15 @@ def uuid4():
     ...
     
 ```
+
+## clean_html <Badge type="tip" text="useCleanHtml" />
+
+```python
+def clean_html(html: str, white_tags=None) -> str:
+    """
+    清除HTML标签
+    >>> clean_html('<p>This is a paragraph.</p><br><strong>This is bold text.</strong>')
+    'This is a paragraph.This is bold text.'
+    """
+    ...
+```

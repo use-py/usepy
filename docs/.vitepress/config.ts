@@ -130,6 +130,10 @@ export default withPwa(defineConfig({
             {
               text: 'useTo',
               link: '/utils/to',
+            },
+            {
+              text: 'utils',
+              link: '/utils/utils',
             }
           ],
         },
