@@ -1,6 +1,13 @@
+import calendar
 from datetime import datetime, timedelta
 from itertools import chain
-from typing import Optional
+from typing import Optional, Literal
+
+UnitType = Optional[
+    Literal[
+        "year", "month", "day", "today", "hour", "minute",
+    ]
+]
 
 DATETIME_COMMON = (
     "%Y-%m-%d %H:%M:%S",
@@ -43,6 +50,54 @@ class UseDateTime:
     MICROSECONDS = 'microseconds'
 
     @staticmethod
+    def now() -> datetime:
+        """
+        获取当前时间
+        :return: 当前时间
+        """
+        return datetime.now()
+
+    format_now = staticmethod(lambda fmt: UseDateTime.format(UseDateTime.now(), fmt))
+
+    @staticmethod
+    def last(dt: datetime, unit: UnitType) -> datetime:
+        """
+        获取最后一天/一年/一月/一周/一小时/一分钟/一秒
+        :param dt: 时间
+        :param unit:
+        :return: 时间
+        """
+        last_dt = dt.replace(hour=23, minute=59, second=59, microsecond=999999)
+        unit_map = {
+            'year': lambda x: x.replace(month=12, day=31),
+            'month': lambda x: x.replace(day=calendar.monthrange(x.year, x.month)[1]),
+            'day': lambda x: x,
+            'today': lambda x: x,
+            'hour': lambda x: x.replace(hour=dt.hour),
+            'minute': lambda x: x.replace(hour=dt.hour, minute=dt.minute)
+        }
+        return unit_map.get(unit, lambda x: x)(last_dt)
+
+    @staticmethod
+    def first(dt: datetime, unit: UnitType) -> datetime:
+        """
+        获取第一天/一年/一月/一周/一小时/一分钟/一秒
+        :param dt: 时间
+        :param unit:
+        :return: 时间
+        """
+        first_dt = dt.replace(hour=0, minute=0, second=0, microsecond=0)
+        unit_map = {
+            'year': lambda x: x.replace(month=1, day=1),
+            'month': lambda x: x.replace(day=1),
+            'day': lambda x: x,
+            'today': lambda x: x,
+            'hour': lambda x: x.replace(hour=dt.hour),
+            'minute': lambda x: x.replace(hour=dt.hour, minute=dt.minute)
+        }
+        return unit_map.get(unit, lambda x: x)(first_dt)
+
+    @staticmethod
     def timestamp(dt: Optional[datetime] = None, digit: int = 10) -> int:
         """
         获取当前时间戳，默认10位
@@ -75,37 +130,34 @@ class UseDateTime:
         return dt.strftime(_fmt)
 
     @staticmethod
-    def format_now(fmt=None) -> str:
-        """
-        获取当前时间
-        :param fmt: 时间格式
-        :return: 时间
-        """
-        return UseDateTime.format(datetime.now(), fmt)
-
-    @staticmethod
-    def format_before(nums, unit=None, fmt=None) -> str:
+    def before(nums, unit=None) -> datetime:
         """
         获取指定单位的时间
         :param nums: 数量
         :param unit: 单位，支持：days[默认], seconds, microseconds, milliseconds, minutes, hours, weeks
-        :param fmt: 时间格式
         :return: 时间
         """
         _unit = unit or 'days'
-        return UseDateTime.format(datetime.now() - timedelta(**{_unit: nums}), fmt)
+        return datetime.now() - timedelta(**{_unit: nums})
+
+    format_before = staticmethod(
+        lambda nums, unit=None, fmt=None: UseDateTime.format(UseDateTime.before(nums, unit), fmt)
+    )
 
     @staticmethod
-    def format_after(nums, unit=None, fmt=None) -> str:
+    def after(nums, unit=None) -> datetime:
         """
         获取指定单位的时间
         :param nums: 数量
         :param unit: 单位，支持：days[默认], seconds, microseconds, milliseconds, minutes, hours, weeks
-        :param fmt: 时间格式
         :return: 时间
         """
         _unit = unit or 'days'
-        return UseDateTime.format(datetime.now() + timedelta(**{_unit: nums}), fmt)
+        return datetime.now() + timedelta(**{_unit: nums})
+
+    format_after = staticmethod(
+        lambda nums, unit=None, fmt=None: UseDateTime.format(UseDateTime.after(nums, unit), fmt)
+    )
 
     @staticmethod
     def parse(time_str: str, fmt=None) -> datetime:
