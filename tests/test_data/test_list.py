@@ -43,6 +43,11 @@ def test_sort():
     assert useList.sort_by_list(['blue', 'green', 'orange', 'purple', 'yellow'], [3, 2, 5, 4, 1]) == ['yellow', 'green',
                                                                                                       'blue', 'purple',
                                                                                                       'orange']
+    assert useList.sort_bubble([1, 8, 6, 11, 3, 0]) == [0, 1, 3, 6, 8, 11]
+    assert (
+            useList.sort([1, 8, 6, 11, 3, 0], algorithm="select")
+            == useList.sort([1, 8, 6, 11, 3, 0], algorithm="quick")
+    )
 
 
 def test_flatten():
