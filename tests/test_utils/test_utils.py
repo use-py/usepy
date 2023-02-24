@@ -33,6 +33,14 @@ def test_cookie_to_dict():
     }
 
 
+def test_data_to_dict():
+    data_str = "key1=value1&key2=value2"
+    assert useDataToDict(data_str) == {
+        "key1": "value1",
+        "key2": "value2",
+    }
+
+
 def test_header_to_dict():
     header_str = """sec-ch-ua: "Not?A_Brand";v="8", "Chromium";v="108", "Microsoft Edge";v="108"
     sec-ch-ua-platform: "macOS"
