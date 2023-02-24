@@ -179,5 +179,38 @@ class UseDateTime:
                 continue
         raise ValueError(f"No valid date format found for '{s}'")
 
+    @staticmethod
+    def humanize(dt: datetime, rel_dt: datetime = None) -> str:
+        """
+        人性化时间
+        :param dt: 时间
+        :param rel_dt: 相对时间 默认当前时间
+        :return: 人性化时间
+        """
+        rel_dt = rel_dt or datetime.now()
+        diff_dt = rel_dt - dt
+
+        diff_seconds = diff_dt.total_seconds()
+        if 0 <= diff_seconds <= 60:
+            return '刚刚'
+
+        chunks = (
+            (60 * 60 * 24 * 365, '年'),
+            (60 * 60 * 24 * 30, '月'),
+            (60 * 60 * 24 * 7, '周'),
+            (60 * 60 * 24, '天'),
+            (60 * 60, '小时'),
+            (60, '分钟'),
+        )
+        er_val = 10  # 误差值
+        tense = '前' if diff_seconds > 0 else '后'
+        diff_seconds = abs(diff_seconds)
+
+        for seconds, unit in chunks:
+            count = (diff_seconds + er_val) // seconds
+            if count != 0:
+                return str(int(count)) + unit + tense
+        return '未知'
+
 
 useDateTime = UseDateTime
