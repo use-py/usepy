@@ -12,6 +12,14 @@ const members = [
       { icon: 'github', link: 'https://github.com/mic1on' },
     ]
   },
+  {
+    avatar: 'https://www.github.com/NowAnti.png',
+    name: 'NowAnti',
+    title: 'Collaborator',
+    links: [
+      { icon: 'github', link: 'https://github.com/NowAnti' },
+    ]
+  },
 ]
 </script>
 
