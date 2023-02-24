@@ -21,3 +21,17 @@ def test_timestamp():
 def test_format_now():
     assert useDateTime.format_now() == useDateTime.format(datetime.now())
     assert useDateTime.format_now(fmt="%Y-%m-%d") == useDateTime.format(datetime.now(), "%Y-%m-%d")
+
+
+def test_humanize():
+    assert useDateTime.humanize(datetime.now()) == '刚刚'
+    assert useDateTime.humanize(datetime.now() - timedelta(seconds=5)) == '刚刚'
+    assert useDateTime.humanize(datetime.now() - timedelta(seconds=65)) == '1分钟前'
+    assert useDateTime.humanize(datetime.now() - timedelta(days=1)) == '1天前'
+    assert useDateTime.humanize(datetime.now() + timedelta(days=2)) == '2天后'
+    assert useDateTime.humanize(datetime.now() - timedelta(days=30)) == '1月前'
+    assert useDateTime.humanize(datetime.now() + timedelta(days=30)) == '1月后'
+    assert useDateTime.humanize(datetime.now() - timedelta(days=365)) == '1年前'
+    assert useDateTime.humanize(datetime.now() + timedelta(days=365)) == '1年后'
+    assert useDateTime.humanize(datetime.now() - timedelta(days=365 * 100)) == '100年前'
+    assert useDateTime.humanize(datetime.now() + timedelta(days=365 * 100)) == '100年后'
