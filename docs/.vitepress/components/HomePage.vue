@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import {
   VPTeamPageTitle,
-  VPTeamMembers
+  VPTeamMembers,
 } from 'vitepress/theme'
 const members = [
   {
@@ -33,7 +33,7 @@ const members = [
               所有贡献者
             </template>
           </VPTeamPageTitle>
-          <VPTeamMembers size="small" :members="members" />
+          <VPTeamMembers :members="members" />
         </div>
       </main>
     </div>
