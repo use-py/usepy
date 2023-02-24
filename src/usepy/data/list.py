@@ -1,4 +1,8 @@
-from typing import List, Generator, Dict, Optional, Callable, Sequence
+from typing import List, Generator, Dict, Optional, Callable, Sequence, Literal
+
+SortType = Optional[
+    Literal["quick", "bubble", "select"]
+]
 
 
 class UseList:
@@ -95,7 +99,29 @@ class UseList:
         return UseList.sort_quick(lesser) + [pivot] + UseList.sort_quick(greater)
 
     @staticmethod
-    def sort(collection: List, algorithm='bubble') -> List:
+    def sort_select(collection: List) -> List:
+        """
+        选择排序
+        :param collection: 待排序数组
+        :return: 排序后数组
+
+        >>> UseList.sort_select([0, 5, 3, 2, 2])
+        [0, 2, 2, 3, 5]
+        >>> UseList.sort_select([])
+        []
+        >>> UseList.sort_select([-2, 5, 0, -45])
+        [-45, -2, 0, 5]
+        """
+        for i in range(len(collection) - 1):
+            min_index = i
+            for j in range(i + 1, len(collection)):
+                if collection[j] < collection[min_index]:
+                    min_index = j
+            collection[i], collection[min_index] = collection[min_index], collection[i]
+        return collection
+
+    @staticmethod
+    def sort(collection: List, algorithm: SortType = 'bubble') -> List:
         """
         排序
         :param collection: 待排序数组
