@@ -13,6 +13,7 @@ from .decorator import (
     useExceptDebug,
     useListify,
     useCachedProperty,
+    useRetry
 )
 from .utils import (
     useTimer,
@@ -46,6 +47,8 @@ __all__ = [
     'useCatchError',
     'useExceptDebug',
     'useListify',
+    'useCachedProperty',
+    'useRetry',
     # utils
     'useIs',
     'useTo',
