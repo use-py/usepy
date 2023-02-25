@@ -25,10 +25,13 @@ from .utils import (
     useDataToDict,
     useCookieToDict,
     useHeadersToDict,
-    useCleanHtml
+    useCleanHtml,
+    useBloomFilter,
+    useTo,
+    useIs
 )
-from .utils import useIs, useTo, utils as uesUtils
 
+from .utils.bloom_filter import BloomFilter as useBloomFilter
 from ._datetime import useDateTime
 
 from ._path import usePath
@@ -62,6 +65,7 @@ __all__ = [
     'useCookieToDict',
     'useHeadersToDict',
     'useCleanHtml',
+    'useBloomFilter',
 
     'useDateTime',
     'usePath'
