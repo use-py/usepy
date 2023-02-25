@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "usepy"
-version = "0.1.29"
+version = "0.1.30"
 description = "usepy"
 homepage = "https://usepy.code05.com/"
 authors = ["miclon <jcnd@163.com>"]
@@ -15,6 +15,7 @@ python = "^3.8"
 
 [tool.poetry.group.test.dependencies]
 pytest = "^7.2.1"
+redis = "^4.5.1"
 
 [build-system]
 requires = ["poetry-core"]
