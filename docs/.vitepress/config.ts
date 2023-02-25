@@ -124,6 +124,10 @@ export default withPwa(defineConfig({
               link: '/utils/timer',
             },
             {
+              text: 'useBloomFilter',
+              link: '/utils/bloom_filter',
+            },
+            {
               text: 'useIs',
               link: '/utils/is',
             },

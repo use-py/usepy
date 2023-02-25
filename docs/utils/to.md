@@ -24,3 +24,29 @@ def string(data):
     ...
     
 ```
+
+
+## md5
+将字符数据转换为md5
+```python
+def md5(data: AnyStr) -> str:
+    """
+    将字符数据转换为md5
+    :param data: data
+    :return: md5
+    """
+    ...
+```
+
+
+## sha1
+将字符数据转换为sha1
+```python
+def sha1(data: AnyStr) -> str:
+    """
+    将字符数据转换为sha1
+    :param data: data
+    :return: sha1
+    """
+    ...
+```
