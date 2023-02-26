@@ -50,3 +50,41 @@ def sha1(data: AnyStr) -> str:
     """
     ...
 ```
+
+## camel
+将字符串转换为驼峰命名
+```python
+def camel(data: str, char: str = '-') -> str:
+    """
+    将字符数据转换为驼峰命名
+    :param data: data
+    :param char: 特征字符，如：-、_
+    :return:
+    >>> camel("test")
+    'test'
+    >>> camel("test-case")
+    'testCase'
+    >>> camel("test_case", char="_")
+    'testCase'
+    """
+    ...
+```
+
+## snake
+将字符串转换为下划线命名
+```python
+def snake(data: str, char: str = '_') -> str:
+    """
+    将字符数据转换为下划线命名
+    :param data: data
+    :param char: 特征字符，如：-、_
+    :return:
+    >>> snake("test")
+    'test'
+    >>> snake("testCase")
+    'test_case'
+    >>> snake("testCase", char="-")
+    'test-case'
+    """
+    ...
+```
