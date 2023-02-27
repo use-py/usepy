@@ -128,6 +128,10 @@ export default withPwa(defineConfig({
               link: '/utils/bloom_filter',
             },
             {
+              text: 'useThread',
+              link: '/utils/thread',
+            },
+            {
               text: 'useIs',
               link: '/utils/is',
             },

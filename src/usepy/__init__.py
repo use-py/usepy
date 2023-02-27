@@ -35,6 +35,7 @@ from .utils.bloom_filter import BloomFilter as useBloomFilter
 from ._datetime import useDateTime
 
 from ._path import usePath
+from ._thread import useThread
 
 __all__ = [
     # data
@@ -68,5 +69,6 @@ __all__ = [
     'useBloomFilter',
 
     'useDateTime',
-    'usePath'
+    'usePath',
+    'useThread',
 ]
