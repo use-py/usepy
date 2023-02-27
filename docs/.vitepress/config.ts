@@ -110,9 +110,38 @@ export default withPwa(defineConfig({
               text: 'usePath',
               link: '/api/path',
             },
+          ],
+        },
+        {
+          text: 'Decorator',
+          items: [
             {
-              text: 'useDecorator',
-              link: '/api/decorator',
+              text: 'useThread',
+              link: '/decorator/thread',
+            },
+            {
+              text: 'useSingleton',
+              link: '/decorator/singleton',
+            },
+            {
+              text: 'useTimeIt',
+              link: '/decorator/timeit',
+            },
+            {
+              text: 'useCatchError',
+              link: '/decorator/catch_error',
+            },
+            {
+              text: 'useExceptDebug',
+              link: '/decorator/except_debug',
+            },
+            {
+              text: 'useRunInThread',
+              link: '/decorator/run_in_thread',
+            },
+            {
+              text: 'useListify',
+              link: '/decorator/listify',
             },
           ],
         },
@@ -126,10 +155,6 @@ export default withPwa(defineConfig({
             {
               text: 'useBloomFilter',
               link: '/utils/bloom_filter',
-            },
-            {
-              text: 'useThread',
-              link: '/utils/thread',
             },
             {
               text: 'useIs',
