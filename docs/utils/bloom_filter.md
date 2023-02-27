@@ -34,3 +34,4 @@ print(bf.exists('hello')) # True
 print(bf.exists('world')) # True
 print(bf.exists('python')) # False
 print(bf.exists('')) # False
+```
