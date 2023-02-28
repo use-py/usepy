@@ -10,14 +10,14 @@ except ModuleNotFoundError as e:
     raise ModuleNotFoundError(
         "You need install the 'loguru' module before use 'usepy.logger.*'"
     )
-from typing import List, Tuple, Optional, Union
+from typing import List, Tuple, Optional, Union, Dict
 
 from .handlers import default_handler
 from .intercept import intercept_logger
 
 
 def init_logger(
-        handlers: Optional[List[dict]] = None,
+        handlers: Optional[List[Dict]] = None,
         packages: Optional[Union[List[str], Tuple[str]]] = None,
         **kwargs
 ):
