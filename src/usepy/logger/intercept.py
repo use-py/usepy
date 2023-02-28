@@ -1,6 +1,6 @@
 import logging
 from types import FrameType
-from typing import Tuple, cast, Optional, List
+from typing import Tuple, cast, Optional, List, Union
 
 try:
     from loguru import logger
@@ -32,7 +32,7 @@ class InterceptHandler(logging.Handler):
         )
 
 
-def intercept_logger(names: Optional[List[str], Tuple[str]] = None, include_child=False):
+def intercept_logger(names: Optional[Union[List[str], Tuple[str]]] = None, include_child=False):
     """
     使用 loguru 拦截 指定的 logging 日志
 

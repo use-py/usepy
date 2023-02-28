@@ -10,14 +10,13 @@ except ModuleNotFoundError as e:
     raise ModuleNotFoundError(
         "You need install the 'loguru' module before use 'usepy.logger.*'"
     )
-
-from typing import List, Dict, Tuple, Optional
+from typing import List, Tuple, Optional, Union
 
 from .handlers import default_handler
 from .intercept import intercept_logger
 
 
-def init_logger(handlers: Optional[List[Dict]] = None, packages: Optional[List[str], Tuple[str]] = None, **kwargs):
+def init_logger(handlers: Optional[List[str]] = None, packages: Optional[Union[List[str], Tuple[str]]] = None, **kwargs):
     """
     为 kit.rpc 集成日志的处理，默认拦截kit和uvicorn的日志。
     所属程序本身的日志可直接 from loguru import logger
