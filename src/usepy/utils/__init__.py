@@ -2,6 +2,7 @@ from . import useragent as useUserAgent
 from .timer import Timer as useTimer, TimerManager as useTimerManager
 from .import_object import import_object as useImport, LazyImport as useLazyImport
 from .bloom_filter import BloomFilter as useBloomFilter
+from .logger import Logger as useLogger
 
 from .utils import (
     gen_unique_id as useUniqueId,

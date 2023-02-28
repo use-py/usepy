@@ -27,6 +27,7 @@ from .utils import (
     useHeadersToDict,
     useCleanHtml,
     useBloomFilter,
+    useLogger,
     useTo,
     useIs
 )
@@ -67,6 +68,7 @@ __all__ = [
     'useHeadersToDict',
     'useCleanHtml',
     'useBloomFilter',
+    'useLogger',
 
     'useDateTime',
     'usePath',
