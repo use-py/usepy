@@ -110,6 +110,10 @@ export default withPwa(defineConfig({
               text: 'usePath',
               link: '/api/path',
             },
+            {
+              text: 'useLogger',
+              link: '/api/logger',
+            },
           ],
         },
         {
