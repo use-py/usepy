@@ -1,6 +1,6 @@
 import json
 from logging import Formatter
-from typing import Tuple, List, Optional
+from typing import Tuple, List, Optional, Union
 
 EXTRA_IGNORE_FIELDS_DEFAULT = (
     "name",
@@ -30,7 +30,7 @@ class JsonFormatter(Formatter):
 
     def __init__(
         self,
-        extra_ignore_keys: Optional[List[str], Tuple[str]] = EXTRA_IGNORE_FIELDS_DEFAULT,
+        extra_ignore_keys: Optional[Union[List[str], Tuple[str]]] = EXTRA_IGNORE_FIELDS_DEFAULT,
         with_timestamp: bool = True,
         **kwargs
     ):

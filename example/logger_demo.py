@@ -1,8 +1,6 @@
-import threading
-from typing import Any
 from fastapi import FastAPI
-import uvicorn
 from loguru import logger
+
 from usepy.logger import (
     useLogger,
     useLoggerIntercept,
@@ -10,15 +8,19 @@ from usepy.logger import (
     default_handler,
     logstash_handler
 )
+from usepy.logger import useLoggerInterceptUvicorn
+
+useLoggerInterceptUvicorn()  # 在 app 实例化前调用即可
+
+app = FastAPI()
 
 
-def main():
-    def uvicorn_run():
-        # 拦截转发 uvicorn
-        server = uvicorn.Server(uvicorn.Config(app=FastAPI(), host="0.0.0.0"))
-        useLoggerInterceptUvicorn()  # 注意拦截时机，详看函数说明
-        server.run()
+@app.get("/")
+def home():
+    return {"message": "hello"}
 
+
+if __name__ == '__main__':
     # 一键调用，默认为 default_handler
     # useLogger()
     # useLogger(extra={"project_name": "project_name"})
@@ -41,14 +43,14 @@ def main():
     # logger.configure(extra={"project_name": "project_name"})
 
     # 个性化配置
-    useLoggerIntercept(("kit",))  # 拦截转发 指定的库
-    logger.configure(
-        handlers=[
-            default_handler(level="TRACE"),
-            logstash_handler(level="WARNING", extra={"app_name": "app_name"}),
-        ],
-        extra={"project_name": "project_name"}
-    )
+    # useLoggerIntercept(("kit",))  # 拦截转发 指定的库
+    # logger.configure(
+    #     handlers=[
+    #         default_handler(level="TRACE"),
+    #         logstash_handler(level="WARNING", extra={"app_name": "app_name"}),
+    #     ],
+    #     extra={"project_name": "project_name"}
+    # )
 
     # 测试输出日志
     logger.warning("test debug")
@@ -56,33 +58,5 @@ def main():
     logger.debug("test debug")
     logger.opt(raw=True).debug("No formatting\n")
 
-    threading.Thread(target=uvicorn_run).start()
-
-
-if __name__ == '__main__':
-    main()
-
-    """
-    from usepy.logger import useLogger, defaultHandler, logstashHandler
-
-    useLogger(
-        handlers=[
-            defaultHandler(level="DEBUG", ),
-            logstashHandler(
-                level="INFO",
-                format=JsonFormatter(),
-                filter=lambda record: "uvicorn" not in record["name"],
-                extra={"app_name": "app_name"}
-            )
-        ],
-        packages=["kit"],
-        extra={"project_name": "project_name"}
-    )
-
-    useLogger(
-        handlers=[
-            defaultHandler(),
-        ],
-    )
-
-    """
+    import uvicorn
+    uvicorn.run(app="app:app", host="127.0.0.1", reload=False, workers=2)

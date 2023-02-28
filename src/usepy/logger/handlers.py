@@ -1,7 +1,5 @@
 import logging
 import sys
-from types import FrameType
-from typing import Dict, cast
 
 from .formatters import JsonFormatter
 

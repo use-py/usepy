@@ -1,6 +1,6 @@
 import logging
 from types import FrameType
-from typing import Tuple, cast, Optional, List
+from typing import Tuple, cast, Optional, List, Union
 
 try:
     from loguru import logger
@@ -32,7 +32,7 @@ class InterceptHandler(logging.Handler):
         )
 
 
-def intercept_logger(names: Optional[List[str], Tuple[str]] = None, include_child=False):
+def intercept_logger(names: Optional[Union[List[str], Tuple[str]]] = None, include_child=False):
     """
     使用 loguru 拦截 指定的 logging 日志
 
@@ -66,22 +66,21 @@ def intercept_logger(names: Optional[List[str], Tuple[str]] = None, include_chil
             # logger.debug(f"{name} hooked. level={logging_logger.level}")
 
 
-UVICORN_LOGGER_NAMES = ("uvicorn", "uvicorn.asgi", "uvicorn.access")
+UVICORN_LOGGER_NAMES = ["uvicorn", "uvicorn.asgi", "uvicorn.access"]
 
 
 def intercept_uvicorn_logger():
     """
     使用 loguru 拦截 uvicorn 日志
 
-    需要注意拦截时机，在Config后，run之前拦截，才能全部拦截，例子：
+    注意拦截时机，在 app 实例化之前调用即可，例子：
     --------
-    >>> server = uvicorn.Server(uvicorn.Config(
-    ...    app='web:app',
-    ...    host=settings.server.host,
-    ...    port=settings.server.port,
-    ...    reload=settings.server.reload
-    ... ))
-    >>> intercept_uvicorn_logger()
-    >>> server.run()
+    >>> from fastapi import FastAPI
+    >>> from usepy.logger import useLoggerInterceptUvicorn
+    >>>
+    >>> useLoggerInterceptUvicorn()  # 在 app 实例化前调用即可
+    >>> app = FastAPI()
+    >>>
+    >>> ...
     """
     intercept_logger(UVICORN_LOGGER_NAMES, include_child=True)

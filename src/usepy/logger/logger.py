@@ -10,23 +10,23 @@ except ModuleNotFoundError as e:
     raise ModuleNotFoundError(
         "You need install the 'loguru' module before use 'usepy.logger.*'"
     )
-
-from typing import List, Dict, Tuple, Optional
+from typing import List, Tuple, Optional, Union
 
 from .handlers import default_handler
 from .intercept import intercept_logger
 
 
-def init_logger(handlers: Optional[List[Dict]] = None, packages: Optional[List[str], Tuple[str]] = None, **kwargs):
+def init_logger(
+        handlers: Optional[List[dict]] = None,
+        packages: Optional[Union[List[str], Tuple[str]]] = None,
+        **kwargs
+):
     """
-    为 kit.rpc 集成日志的处理，默认拦截kit和uvicorn的日志。
-    所属程序本身的日志可直接 from loguru import logger
+    一键配置 loguru ，所属程序本身的日志可直接 from loguru import logger ，即可正常处理
 
-    # :param default: 默认 level=DEBUG ， 输出到 sys.stderr
-    # :param logstash: 默认 level=INFO ， 输出为 json。过滤了 uvicorn 的日志
-    # :param intercept: logging 要拦截的日志名列表，默认只拦截 kit，具体格式参考 intercept_logger()
-    # :param logstash_extra: 要传递给 logstash_handler 的 JsonFormatter 的 kwargs 的参数
-    # :param logger_extra: 要传递给 logger 的 extra 的参数
+    :param handlers: 日志处理的 handlers ，参见 loguru.configure ，默认配置了 default_handler ，其他预置的可以从 .logger.handlers 导入
+    :param packages: 要拦截的日志名列表，默认不拦截，传空列表则全部拦截，具体格式参考 useLoggerIntercept()
+    :param kwargs: 其他要传递给 logger.configure 的参数
     """
     if handlers is None:
         handlers = [default_handler()]
