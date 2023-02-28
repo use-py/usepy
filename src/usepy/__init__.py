@@ -1,3 +1,6 @@
+from ._datetime import useDateTime
+from ._path import usePath
+from ._thread import useThread
 from .data import (
     useDict,
     useList,
@@ -15,6 +18,14 @@ from .decorator import (
     useCachedProperty,
     useRetry
 )
+from .logger import (
+    useLogger,
+    useLoggerIntercept,
+    useLoggerInterceptUvicorn,
+    # default_handler,
+    # logstash_handler,
+    # JsonFormatter
+)
 from .utils import (
     useTimer,
     useTimerManager,
@@ -30,12 +41,7 @@ from .utils import (
     useTo,
     useIs
 )
-
 from .utils.bloom_filter import BloomFilter as useBloomFilter
-from ._datetime import useDateTime
-
-from ._path import usePath
-from ._thread import useThread
 
 __all__ = [
     # data
@@ -53,6 +59,10 @@ __all__ = [
     'useListify',
     'useCachedProperty',
     'useRetry',
+    # logger
+    'useLogger',
+    'useLoggerIntercept',
+    'useLoggerInterceptUvicorn',
     # utils
     'useIs',
     'useTo',
@@ -67,7 +77,6 @@ __all__ = [
     'useHeadersToDict',
     'useCleanHtml',
     'useBloomFilter',
-
     'useDateTime',
     'usePath',
     'useThread',
