@@ -169,6 +169,10 @@ export default withPwa(defineConfig({
               link: '/utils/to',
             },
             {
+              text: 'useURL',
+              link: '/utils/url',
+            },
+            {
               text: 'utils',
               link: '/utils/utils',
             }
