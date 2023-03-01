@@ -39,7 +39,8 @@ from .utils import (
     useCleanHtml,
     useBloomFilter,
     useTo,
-    useIs
+    useIs,
+    useURL,
 )
 from .utils.bloom_filter import BloomFilter as useBloomFilter
 
@@ -80,4 +81,5 @@ __all__ = [
     'useDateTime',
     'usePath',
     'useThread',
+    'useURL',
 ]
