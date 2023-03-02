@@ -61,3 +61,10 @@ def test_clean_html():
     assert useCleanHtml(test_html) == "test"
     test_html2 = """<div class="test"><p>test</p><p>test2</p></div>"""
     assert useCleanHtml(test_html2, white_tags=["p"]) == "<p>test</p><p>test2</p>"
+
+
+def test_useSizeofFmt():
+    base_size = 1024
+    suffix = "B"
+    for i in range(1, 9):
+        assert useSizeofFmt(base_size ** i) == f"1.0 {'_KMGTPEZY'[i]}{suffix}"

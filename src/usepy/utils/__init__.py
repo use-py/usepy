@@ -10,5 +10,6 @@ from .utils import (
     cookie_to_dict as useCookieToDict,
     headers_to_dict as useHeadersToDict,
     data_to_dict as useDataToDict,
+    sizeof_fmt as useSizeofFmt,
 )
 from .url import URL as useURL
