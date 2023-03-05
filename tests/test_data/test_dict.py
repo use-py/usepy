@@ -33,6 +33,8 @@ def test_merge():
 
     assert useDict.merge_values({'a': 1, 'b': 2}, {'a': 3, 'b': 4}) == {'a': [1, 3], 'b': [2, 4]}
 
+    assert useDict.merge_value({'a': 1, 'b': 'foo', 'c': 400, 'd': 400}) == {1: ['a'], 'foo': ['b'], 400: ['c', 'd']}
+
 
 def test_deep_update():
     main_dict = {'a': {'b': 1}}

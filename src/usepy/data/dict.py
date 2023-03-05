@@ -91,6 +91,20 @@ class UseDict:
         return dict(res)
 
     @staticmethod
+    def merge_value(original_dict: dict) -> dict:
+        """
+        合并字典，相同的key合并为数组
+        :param original_dict: 字典
+        :return: 合并后的字典
+        >>> UseDict.merge_value({'a': 1, 'b': 'foo', 'c': 400, 'd': 400})
+        {1: ['a'], 'foo': ['b'], 400: ['c', 'd']}
+        """
+        res = defaultdict(list)
+        for key, value in original_dict.items():
+            res[value].append(key)
+        return dict(res)
+
+    @staticmethod
     def deep_update(main_dict: Dict, update_dict: Dict) -> None:
         """
         深度更新字典
