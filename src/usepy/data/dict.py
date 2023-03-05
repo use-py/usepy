@@ -116,4 +116,3 @@ class UseDict:
                 main_dict[key] = main_dict[key] + update_dict[key]
             else:
                 main_dict[key] = value
-        return main_dict
