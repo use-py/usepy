@@ -54,3 +54,12 @@ def test_flatten():
     assert useList.flatten([1, 2, [3, 4, [5, 6], 7], 8]) == [1, 2, 3, 4, 5, 6, 7, 8]
     assert useList.flatten([1, 2, [3, 4, (5, 5), 7], 8]) == [1, 2, 3, 4, 5, 5, 7, 8]
     assert useList.flatten((1, 2, (3, 4, (5, 5), 7), 8)) == [1, 2, 3, 4, 5, 5, 7, 8]
+
+
+def test_min_max_by():
+    assert useList.min_by([{"a": 1, "b": 2}, {"a": 3, "b": 5}], lambda v: v['a']) == {"a": 1, "b": 2}
+    assert useList.max_by([{"a": 1, "b": 2}, {"a": 3, "b": 5}], lambda v: v['a']) == {"a": 3, "b": 5}
+    assert useList.max_by([{'n': 4}, {'n': 2}, {'n': 8}, {'n': 6}], lambda v: v['n']) == {'n': 8}
+    assert useList.min_by([{'n': 4}, {'n': 2}, {'n': 8}, {'n': 6}], lambda v: v['n']) == {'n': 2}
+    assert useList.max_by([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], lambda v: v) == 10
+    assert useList.min_by([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], lambda v: v) == 1

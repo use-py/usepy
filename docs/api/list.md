@@ -153,3 +153,39 @@ def sort_by_list(collection: List, sort_list: List) -> List:
     """
     return [val for (_, val) in sorted(zip(sort_list, collection), key=lambda x: x[0])]
 ```
+
+### min_by
+
+获取列表中最小值。
+
+```python
+def min_by(collection: List, key: Callable) -> Any:
+    """
+    获取列表中最小值
+    :param collection: 待排序数组
+    :param key: 指定排序列表
+    :return: 最小值
+
+    >>> UseList.min_by([{'n': 4}, {'n': 2}, {'n': 8}, {'n': 6}], lambda x: x['n'])
+    {'n': 2}
+    """
+    ...
+```
+
+### max_by
+
+获取列表中最大值。
+
+```python
+def max_by(collection: List, key: Callable) -> Any:
+    """
+    获取列表中最大值
+    :param collection: 待排序数组
+    :param key: 指定排序列表
+    :return: 最大值
+
+    >>> UseList.max_by([{'n': 4}, {'n': 2}, {'n': 8}, {'n': 6}], lambda x: x['n'])
+    {'n': 8}
+    """
+    ...
+```

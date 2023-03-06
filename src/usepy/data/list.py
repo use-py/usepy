@@ -1,4 +1,4 @@
-from typing import List, Generator, Dict, Optional, Callable, Sequence, Literal
+from typing import List, Generator, Dict, Optional, Callable, Sequence, Literal, Any
 
 SortType = Optional[
     Literal["quick", "bubble", "select"]
@@ -166,3 +166,29 @@ class UseList:
             except TypeError:
                 result.append(item)
         return result
+
+    @staticmethod
+    def min_by(collection: List, fn: Callable) -> Any:
+        """
+        返回最小值
+        :param collection: 数组
+        :param fn: 函数
+        :return: 最小值
+
+        >>> UseList.min_by([{'n': 4}, {'n': 2}, {'n': 8}, {'n': 6}], lambda v: v['n'])
+        {'n': 2}
+        """
+        return min(collection, key=fn)
+
+    @staticmethod
+    def max_by(collection: List, fn: Callable) -> Any:
+        """
+        返回最大值
+        :param collection: 数组
+        :param fn: 函数
+        :return: 最大值
+
+        >>> UseList.max_by([{'n': 4}, {'n': 2}, {'n': 8}, {'n': 6}], lambda v: v['n'])
+        {'n': 8}
+        """
+        return max(collection, key=fn)
