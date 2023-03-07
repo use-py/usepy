@@ -13,7 +13,7 @@ def cookie_to_dict(cookies: str) -> dict:
     :param cookies: cookie字符串
     :return: dict
     """
-    return dict(x.split('=') for x in cookies.split('; '))  # noqa
+    return dict(x.split('=', 1) for x in cookies.split('; '))  # noqa
 
 
 def headers_to_dict(headers: str) -> dict:

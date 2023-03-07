@@ -26,6 +26,11 @@ from .logger import (
     # logstash_handler,
     # JsonFormatter
 )
+from .parser import (
+    useParser,
+    useCURL,
+    useURL
+)
 from .utils import (
     useTimer,
     useTimerManager,
@@ -39,8 +44,7 @@ from .utils import (
     useCleanHtml,
     useBloomFilter,
     useTo,
-    useIs,
-    useURL,
+    useIs
 )
 from .utils.bloom_filter import BloomFilter as useBloomFilter
 
@@ -64,6 +68,10 @@ __all__ = [
     'useLogger',
     'useLoggerIntercept',
     'useLoggerInterceptUvicorn',
+    # parser
+    'useParser',
+    'useCURL',
+    'useURL',
     # utils
     'useIs',
     'useTo',
@@ -81,5 +89,4 @@ __all__ = [
     'useDateTime',
     'usePath',
     'useThread',
-    'useURL',
 ]

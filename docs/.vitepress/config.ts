@@ -114,6 +114,10 @@ export default withPwa(defineConfig({
               text: 'useLogger',
               link: '/api/logger',
             },
+            {
+              text: 'useParser',
+              link: '/api/parser',
+            },
           ],
         },
         {
@@ -167,10 +171,6 @@ export default withPwa(defineConfig({
             {
               text: 'useTo',
               link: '/utils/to',
-            },
-            {
-              text: 'useURL',
-              link: '/utils/url',
             },
             {
               text: 'utils',
