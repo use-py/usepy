@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "usepy"
-version = "0.1.35"
+version = "0.1.36"
 description = "usepy"
 homepage = "https://usepy.code05.com/"
 authors = ["miclon <jcnd@163.com>"]
@@ -11,6 +11,7 @@ packages = [
 
 [tool.poetry.dependencies]
 python = "^3.8"
+usepy-plugin-notify = { version = "^0.2.2", optional = true }
 
 
 [tool.poetry.group.test.dependencies]
