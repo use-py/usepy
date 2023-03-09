@@ -48,6 +48,13 @@ from .utils import (
 )
 from .utils.bloom_filter import BloomFilter as useBloomFilter
 
+try:
+    from notify import useNotify, channels as useNotifyChannels
+except ImportError:
+    raise ModuleNotFoundError(
+        "You need install the 'usepy_plugin_notify' module before use 'useNotify'"
+    )
+
 __all__ = [
     # data
     'useDict',
@@ -89,4 +96,8 @@ __all__ = [
     'useDateTime',
     'usePath',
     'useThread',
+
+    # plugins
+    'useNotify',
+    'useNotifyChannels',
 ]
