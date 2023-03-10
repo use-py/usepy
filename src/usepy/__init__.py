@@ -48,8 +48,9 @@ from .utils import (
 )
 from .utils.bloom_filter import BloomFilter as useBloomFilter
 
+# plugins
 try:
-    from notify import useNotify, channels as useNotifyChannels
+    from usepy_notify import useNotify, channels as useNotifyChannels
 except ImportError:
     pass
 
