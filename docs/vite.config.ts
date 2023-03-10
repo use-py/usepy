@@ -4,7 +4,7 @@ import { defineConfig } from 'vite'
 import Components from 'unplugin-vue-components/vite'
 import Unocss from 'unocss/vite'
 import { presetAttributify, presetIcons, presetUno } from 'unocss'
-import { resolve } from 'pathe'
+import { resolve } from 'path'
 
 export default defineConfig({
   optimizeDeps: {
