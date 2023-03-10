@@ -10,16 +10,12 @@ title: 快速开始 | 指南
 
 ## 安装
 
-使用`pip`安装
-```bash
+::: code-group
+
+```bash [pip]
 pip install usepy
-```
-
-使用`poetry`安装
-```bash
+``` 
+```bash [poetry]
 poetry add usepy
-```
-
-:::tip
-usepy 必须使用python3.8及以上版本
+``` 
 :::

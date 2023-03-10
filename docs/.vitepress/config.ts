@@ -74,6 +74,7 @@ export default withPwa(defineConfig({
     nav: [
       { text: '指南', link: '/guide/' },
       { text: 'API', link: '/api/' },
+      { text: '插件', link: '/plugin/' },
     ],
 
     sidebar: {
