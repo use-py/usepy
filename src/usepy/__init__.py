@@ -44,6 +44,9 @@ from .utils.bloom_filter import BloomFilter as useBloomFilter
 # plugins
 try:
     from usepy_notify import useNotify, channels as useNotifyChannels
+except ImportError:
+    pass
+try:
     from usepy_logger import useLogger, useLoggerIntercept, useLoggerInterceptUvicorn
 except ImportError:
     pass
