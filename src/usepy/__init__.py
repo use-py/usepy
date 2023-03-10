@@ -51,9 +51,7 @@ from .utils.bloom_filter import BloomFilter as useBloomFilter
 try:
     from notify import useNotify, channels as useNotifyChannels
 except ImportError:
-    raise ModuleNotFoundError(
-        "You need install the 'usepy_plugin_notify' module before use 'useNotify'"
-    )
+    pass
 
 __all__ = [
     # data
