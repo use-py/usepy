@@ -18,14 +18,7 @@ from .decorator import (
     useCachedProperty,
     useRetry
 )
-from .logger import (
-    useLogger,
-    useLoggerIntercept,
-    useLoggerInterceptUvicorn,
-    # default_handler,
-    # logstash_handler,
-    # JsonFormatter
-)
+
 from .parser import (
     useParser,
     useCURL,
@@ -51,6 +44,7 @@ from .utils.bloom_filter import BloomFilter as useBloomFilter
 # plugins
 try:
     from usepy_notify import useNotify, channels as useNotifyChannels
+    from usepy_logger import useLogger, useLoggerIntercept, useLoggerInterceptUvicorn
 except ImportError:
     pass
 
@@ -70,10 +64,6 @@ __all__ = [
     'useListify',
     'useCachedProperty',
     'useRetry',
-    # logger
-    'useLogger',
-    'useLoggerIntercept',
-    'useLoggerInterceptUvicorn',
     # parser
     'useParser',
     'useCURL',
@@ -99,4 +89,8 @@ __all__ = [
     # plugins
     'useNotify',
     'useNotifyChannels',
+
+    'useLogger',
+    'useLoggerIntercept',
+    'useLoggerInterceptUvicorn',
 ]
