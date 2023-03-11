@@ -1,8 +1,19 @@
 ---
-title: useLogger
+title: usepy-plugin-logger
 outline: deep
 ---
-# useLogger
+# usepy-plugin-logger
+
+::: code-group
+
+```bash [pip]
+pip install "usepy[logger]"
+```
+```bash [poetry]
+poetry add "usepy[logger]"
+```
+:::
+
 
 `loguru`是一个十分优秀的日志库，但是大部分第三方库都是使用`logging`模块来进行日志记录的，当项目中同时使用了`loguru`和`logging`时，会导致日志记录混乱。
 
@@ -14,7 +25,7 @@ outline: deep
 ## 使用
 
 ```python
-from usepy.logger import useLogger
+from usepy import useLogger
 
 useLogger() # 使用默认配置
 ```
@@ -24,7 +35,7 @@ useLogger() # 使用默认配置
 如果想要感受它带来的“魔法”，需要稍微配置一下。
 
 ```python
-from usepy.logger import useLogger
+from usepy import useLogger
 
 useLogger(packages=["scrapy", "django", "usepy"])
 ```
@@ -39,8 +50,7 @@ useLogger(packages=["scrapy", "django", "usepy"])
 `useLogger`内置一个`logstash_handler`统一化输出格式。
 
 ```python{6}
-from usepy import useTimeIt
-from usepy.logger import useLogger, logstash_handler
+from usepy import useTimeIt, useLogger, logstash_handler
 
 useLogger(
     handlers=[
@@ -73,7 +83,7 @@ useTimeIt(lambda: logger.debug("start run test function"))()
 ```python
 # app.py
 from fastapi import FastAPI
-from usepy.logger import useLoggerInterceptUvicorn
+from usepy import useLoggerInterceptUvicorn
 
 useLoggerInterceptUvicorn()  # 在 app 实例化前调用即可
 
@@ -101,7 +111,7 @@ uvicorn.run(app="app:app", host="127.0.0.1")
 
 ```python
 from loguru import logger
-from usepy.logger import useLogger
+from usepy import useLogger
 
 useLogger()
 

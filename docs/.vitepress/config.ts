@@ -78,6 +78,21 @@ export default withPwa(defineConfig({
     ],
 
     sidebar: {
+      '/plugin': [
+        {
+          text: '扩展插件',
+          items: [
+            {
+              text: 'usepy-plugin-logger',
+              link: '/plugin/logger',
+            },
+            {
+              text: 'usepy-plugin-notify',
+              link: '/plugin/notify',
+            }
+          ],
+        }
+      ],
       '/': [
         {
           text: '指南',
@@ -110,10 +125,6 @@ export default withPwa(defineConfig({
             {
               text: 'usePath',
               link: '/api/path',
-            },
-            {
-              text: 'useLogger',
-              link: '/api/logger',
             },
             {
               text: 'useParser',
