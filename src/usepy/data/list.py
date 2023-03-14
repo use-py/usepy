@@ -161,9 +161,12 @@ class UseList:
         """
         result = []
         for item in nested:
-            try:
-                result.extend(UseList.flatten(item))
-            except TypeError:
+            if isinstance(item, list):
+                try:
+                    result.extend(UseList.flatten(item))
+                except TypeError:
+                    result.append(item)
+            else:
                 result.append(item)
         return result
 
@@ -192,3 +195,27 @@ class UseList:
         {'n': 8}
         """
         return max(collection, key=fn)
+
+
+if __name__ == '__main__':
+    a = UseList.flatten([
+        [
+            "a",
+            [
+                "miclon"
+            ]
+        ],
+        [
+            "b",
+            [
+                "miclon"
+            ]
+        ],
+        [
+            "c",
+            [
+                "miclon"
+            ]
+        ]
+    ])
+    print(a)
