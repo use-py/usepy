@@ -1,14 +1,16 @@
-from typing import List, Generator, Dict, Optional, Callable, Sequence, Literal, Any
+from typing import List, Generator, Dict, Optional, Callable, Literal, Any, Tuple, Union
 
 SortType = Optional[
     Literal["quick", "bubble", "select"]
 ]
 
+ListType = Union[List, Tuple]
+
 
 class UseList:
 
     @staticmethod
-    def split(collection: Sequence, n: int) -> Generator[List, None, None]:
+    def split(collection: ListType, n: int) -> Generator[List, None, None]:
         """
         按指定数量平均分割列表
         :param collection: 原始列表
@@ -17,12 +19,14 @@ class UseList:
 
         >>> list(UseList.split([1, 2, 3, 4, 5, 6, 7, 8, 9], 3))
         [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+        >>> list(UseList.split((1, 2, 3, 4, 5, 6, 7, 8, 9), 4))
+        [(1, 2, 3, 4), (5, 6, 7, 8), (9,)]
         """
         for i in range(0, len(collection), n):
             yield collection[i:i + n]
 
     @staticmethod
-    def reverse(collection: Sequence) -> List:
+    def reverse(collection: ListType) -> List:
         """
         反转列表
         :param collection: 待反转列表
@@ -150,7 +154,7 @@ class UseList:
         return [val for (_, val) in sorted(zip(sort_list, collection), key=lambda x: x[0])]
 
     @staticmethod
-    def flatten(nested: Sequence) -> List:
+    def flatten(nested: ListType) -> List:
         """
         多维数组扁平化
         :param nested: 多维数组
@@ -161,7 +165,7 @@ class UseList:
         """
         result = []
         for item in nested:
-            if isinstance(item, list):
+            if isinstance(item, (list, tuple)):
                 try:
                     result.extend(UseList.flatten(item))
                 except TypeError:
@@ -195,27 +199,3 @@ class UseList:
         {'n': 8}
         """
         return max(collection, key=fn)
-
-
-if __name__ == '__main__':
-    a = UseList.flatten([
-        [
-            "a",
-            [
-                "miclon"
-            ]
-        ],
-        [
-            "b",
-            [
-                "miclon"
-            ]
-        ],
-        [
-            "c",
-            [
-                "miclon"
-            ]
-        ]
-    ])
-    print(a)
