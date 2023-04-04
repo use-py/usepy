@@ -4,7 +4,7 @@ from typing import List, Dict
 
 
 class UseDict:
-
+    
     @staticmethod
     def find_keys(original_dict: Dict, val: any) -> List:
         """
@@ -16,7 +16,7 @@ class UseDict:
         ['b']
         """
         return list(key for key, value in original_dict.items() if value == val)
-
+    
     @staticmethod
     def reverse(original_dict: Dict) -> Dict:
         """
@@ -27,7 +27,7 @@ class UseDict:
         {1: 'a', 2: 'b', 3: 'c'}
         """
         return {v: k for k, v in original_dict.items()}
-
+    
     @staticmethod
     def sort_by_key(original_dict: Dict, az: bool = False) -> Dict:
         """
@@ -39,7 +39,7 @@ class UseDict:
         {'a': 3, 'b': 2, 'c': 1}
         """
         return dict(sorted(original_dict.items(), reverse=az))
-
+    
     @staticmethod
     def sort_by_value(original_dict: Dict, az: bool = False) -> Dict:
         """
@@ -51,7 +51,7 @@ class UseDict:
         {'c': 1, 'b': 2, 'a': 3}
         """
         return dict(sorted(original_dict.items(), key=lambda x: x[1], reverse=az))
-
+    
     @staticmethod
     def arrays_to_dict(keys: List, values: List) -> Dict:
         """
@@ -63,7 +63,7 @@ class UseDict:
         {'a': 1, 'b': 2, 'c': 3}
         """
         return dict(zip(keys, values))
-
+    
     @staticmethod
     def merge(*dicts: Dict) -> Dict:
         """
@@ -74,7 +74,7 @@ class UseDict:
         {'a': 1, 'b': 2, 'c': 3}
         """
         return {k: v for d in dicts for k, v in d.items()}
-
+    
     @staticmethod
     def merge_values(*dicts: Dict) -> Dict:
         """
@@ -89,7 +89,7 @@ class UseDict:
             for key in d:
                 res[key].append(d[key])
         return dict(res)
-
+    
     @staticmethod
     def merge_value(original_dict: dict) -> dict:
         """
@@ -103,7 +103,7 @@ class UseDict:
         for key, value in original_dict.items():
             res[value].append(key)
         return dict(res)
-
+    
     @staticmethod
     def deep_update(main_dict: Dict, update_dict: Dict) -> None:
         """
@@ -130,3 +130,32 @@ class UseDict:
                 main_dict[key] = main_dict[key] + update_dict[key]
             else:
                 main_dict[key] = value
+    
+    @staticmethod
+    def expand(source: dict, with_parent: bool = False, parent='') -> dict:
+        """
+        递归展开字典
+
+        Args:
+            source (dict): 待展开的字典。
+            with_parent (bool, optional): 是否将 key 与其父级 key 通过 '.' 拼接。默认为 False。
+            parent (str, optional): 当 with_prefix 为 True 时，key 拼接的前缀。默认为空字符串。
+
+        Returns:
+            dict: 展开后的字典。
+
+        Examples:
+            >>> source = {'a': {'b': 1, 'c': {'d': 2}}}
+            >>> UseDict.expand(source)
+            {'b': 1, 'd': 2}
+            >>> UseDict.expand(source, with_parent=True)
+            {'a.b': 1, 'a.c.d': 2}
+        """
+        result = {}
+        for key, value in source.items():
+            new_key = f"{parent}.{key}" if with_parent and parent else key
+            if isinstance(value, dict):
+                result.update(UseDict.expand(value, with_parent, new_key))
+            else:
+                result[new_key] = value
+        return result
