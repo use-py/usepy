@@ -159,3 +159,85 @@ class UseDict:
             else:
                 result[new_key] = value
         return result
+    
+    @staticmethod
+    def pops(data: dict, keys: list) -> dict:
+        """
+        从字典中弹出指定的多个键值对
+        
+        :param data: 原始字典
+        :param keys: 键列表
+        :return: 弹出的键值对
+        
+        >>> UseDict.pops({'a': 1, 'b': 2, 'c': 3}, ['a', 'c'])
+        {'a': 1, 'c': 3}
+        """
+        res = {}
+        for key in keys:
+            if key in data:
+                res[key] = data.pop(key)
+        return res
+    
+    @staticmethod
+    def pops_by_key_prefix(data: dict, key_prefix: str) -> dict:
+        """
+        从字典中弹出指定前缀的所有键值对
+        
+        :param data: 原始字典
+        :param key_prefix: 键前缀
+        :return: 弹出的键值对
+        
+        >>> UseDict.pops_by_key_prefix({'a': 1, 'b': 2, 'c': 3, 'aa': 4, 'ab': 5}, 'a')
+        {'a': 1, 'aa': 4, 'ab': 5}
+        """
+        res = {}
+        for key in list(data.keys()):
+            if key.startswith(key_prefix):
+                res[key] = data.pop(key)
+        return res
+    
+    @staticmethod
+    def delete_keys(data: dict, keys: list) -> None:
+        """
+        从字典中删除指定的多个键值对
+        
+        :param data: 原始字典
+        :param keys: 键列表
+        
+        >>> data = {'a': 1, 'b': 2, 'c': 3}
+        >>> UseDict.delete_keys(data, ['a', 'c'])
+        >>> assert data == {'b': 2}
+        """
+        for key in keys:
+            if key in data:
+                del data[key]
+    
+    @staticmethod
+    def delete_keys_by_key_prefix(data: dict, key_prefix: str) -> None:
+        """
+        从字典中删除指定前缀的所有键值对
+        
+        :param data: 原始字典
+        :param key_prefix: 键前缀
+        
+        >>> data = {'a': 1, 'b': 2, 'c': 3, 'aa': 4, 'ab': 5}
+        >>> UseDict.delete_keys_by_key_prefix(data, 'a')
+        >>> assert data == {'b': 2, 'c': 3}
+        """
+        for key in list(data.keys()):
+            if key.startswith(key_prefix):
+                del data[key]
+    
+    @staticmethod
+    def replace_keys(data: dict, mapping: dict) -> dict:
+        """
+        替换字典中的键
+        
+        :param data: 原始字典
+        :param mapping: 键映射
+        :return: 替换后的字典
+        
+        >>> UseDict.replace_keys({'a': 1, 'b': 2, 'c': 3}, {'a': 'aa', 'b': 'bb'})
+        {'aa': 1, 'bb': 2, 'c': 3}
+        """
+        return {mapping.get(key, key): value for key, value in data.items()}
