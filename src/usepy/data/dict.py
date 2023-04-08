@@ -67,13 +67,22 @@ class UseDict:
     @staticmethod
     def merge(*dicts: Dict) -> Dict:
         """
-        合并字典
-        :param dicts: 字典列表
-        :return: 合并后的字典
-        >>> UseDict.merge({'a': 1}, {'b': 2}, {'c': 3})
-        {'a': 1, 'b': 2, 'c': 3}
-        """
-        return {k: v for d in dicts for k, v in d.items()}
+            合并多个字典，后面的字典会覆盖前面的字典
+
+            :param dicts: 字典
+            :return: 合并后的字典
+
+            >>> UseDict.merge({'a': 1, 'b': 2}, {'b': 3, 'c': 4})
+            {'a': 1, 'b': 3, 'c': 4}
+            >>> UseDict.merge({'a': 1, 'b': 2}, {'b': 3, 'c': 4}, {'b': None, 'c': 5})
+            {'a': 1, 'b': None, 'c': 5}
+            >>> UseDict.merge({'a': 1, 'b': 2}, {'b': 3, 'c': 4}, {'b': '', 'c': 5})
+            {'a': 1, 'b': '', 'c': 5}
+            """
+        result = {}
+        for d in dicts:
+            result.update(d)
+        return result
     
     @staticmethod
     def merge_values(*dicts: Dict) -> Dict:
