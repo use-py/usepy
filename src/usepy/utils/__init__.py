@@ -12,3 +12,4 @@ from .utils import (
     data_to_dict as useDataToDict,
     sizeof_fmt as useSizeofFmt,
 )
+from .func import get_func_name as useFuncName
