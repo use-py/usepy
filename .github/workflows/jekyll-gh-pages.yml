@@ -42,7 +42,7 @@ jobs:
   deploy:
     environment:
       name: github-pages
-      url: usepy.code05.com
+      url: https://usepy.code05.com
     runs-on: ubuntu-latest
     needs: build
     steps:
