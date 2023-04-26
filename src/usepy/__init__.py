@@ -5,7 +5,8 @@ from .data import (
     useDict,
     useList,
     useString,
-    useAdDict
+    useAdDict,
+    useCounter
 )
 from .decorator import (
     useDecorator,
@@ -57,6 +58,7 @@ __all__ = [
     'useList',
     'useString',
     'useAdDict',
+    'useCounter',
     # decorator
     'useDecorator',
     'useSingleton',
