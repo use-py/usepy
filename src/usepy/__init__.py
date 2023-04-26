@@ -47,7 +47,7 @@ try:
 except ImportError:
     pass
 try:
-    from usepy_logger import useLogger, useLoggerIntercept, useLoggerInterceptUvicorn
+    from usepy_logger import *
 except ImportError:
     pass
 
@@ -96,4 +96,6 @@ __all__ = [
     'useLogger',
     'useLoggerIntercept',
     'useLoggerInterceptUvicorn',
+    'useLoggerHandlers',
+    'useLoggerFormatters'
 ]
