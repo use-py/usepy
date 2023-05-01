@@ -173,6 +173,10 @@ export default withPwa(defineConfig({
               link: '/utils/timer',
             },
             {
+              text: 'useTimeout',
+              link: '/utils/timeout',
+            },
+            {
               text: 'useBloomFilter',
               link: '/utils/bloom_filter',
             },

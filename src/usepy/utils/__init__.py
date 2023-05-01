@@ -5,6 +5,7 @@ from .bloom_filter import BloomFilter as useBloomFilter
 from .html import clean_html as useCleanHtml
 from .import_object import import_object as useImport, LazyImport as useLazyImport
 from .timer import Timer as useTimer, TimerManager as useTimerManager
+from .timeout import useTimeoutFn, useTimeout
 from .utils import (
     gen_unique_id as useUniqueId,
     cookie_to_dict as useCookieToDict,

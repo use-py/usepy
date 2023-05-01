@@ -28,6 +28,8 @@ from .parser import (
 from .utils import (
     useTimer,
     useTimerManager,
+    useTimeoutFn,
+    useTimeout,
     useUserAgent,
     useImport,
     useLazyImport,
@@ -78,6 +80,8 @@ __all__ = [
     'useTo',
     'useTimer',
     'useTimerManager',
+    'useTimeoutFn',
+    'useTimeout',
     'useUserAgent',
     'useImport',
     'useLazyImport',
