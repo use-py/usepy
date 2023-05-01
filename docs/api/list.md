@@ -189,3 +189,23 @@ def max_by(collection: List, key: Callable) -> Any:
     """
     ...
 ```
+
+### difference
+
+```python
+def difference(original_list: List, exclude_list: List, fn: Optional[Callable] = None):
+    """
+    求差集
+    :param original_list: 原数组
+    :param exclude_list: 排除数组
+    :param fn: 函数
+    :return: 差集
+
+    >>> UseList.difference([1, 2, 3], [1, 4])
+    [2, 3]
+    >>> UseList.difference([{'a': 1, 'b': 2}, {'a': 2, 'b': 3}], [{'a': 1, 'b': 2}])
+    [{'a': 2, 'b': 3}]
+    >>> UseList.difference([1, 2, 3], [1, 4], fn=lambda x: x ** 2)
+    [3]
+    """
+```
