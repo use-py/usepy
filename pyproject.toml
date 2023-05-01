@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "usepy"
-version = "0.1.46"
+version = "0.1.47"
 description = "usepy"
 homepage = "https://usepy.code05.com/"
 authors = ["miclon <jcnd@163.com>"]
