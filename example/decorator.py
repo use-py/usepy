@@ -1,7 +1,7 @@
 import logging
 import time
 
-from usepy.decorator import useDecorator, useSingleton
+from usepy import useSingleton, useCatchError, useTimeIt, useRunInThread, useListify
 
 logging.basicConfig(level=logging.DEBUG)
 
@@ -11,45 +11,40 @@ class Test:
     pass
 
 
-@useDecorator.singleton
+@useSingleton
 class Test2:
     pass
 
 
-@useDecorator.catch_error()
+@useCatchError()
 def exception_demo():
     raise Exception('test')
 
 
-@useDecorator.except_debug
-def error2():
-    1 / 0
-
-
-@useDecorator.timeit
+@useTimeIt
 def timeit():
     time.sleep(1)
 
 
-@useDecorator.run_in_thread
+@useRunInThread
 def run_in_thread():
     time.sleep(1)
     print('run_in_thread')
 
 
-@useDecorator.listify()
+@useListify()
 def listify():
     yield 1
 
 
-@useDecorator.listify(collection=set)
+@useListify(collection=set)
 def listify2():
     yield 1
     yield 2
     yield 2
 
 
-@useDecorator.listify(collection=dict)
+@useListify(collection=dict)
 def listify3():
     yield 1, 2
     yield 2, 3

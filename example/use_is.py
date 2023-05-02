@@ -1,1 +1,3 @@
-from usepy import useIs
+from usepy import useIsRegexp
+
+print(useIsRegexp("111"))

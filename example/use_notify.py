@@ -1,8 +1,8 @@
-from usepy import useNotify, useNotifyChannels
+from usepy.integrations.useNotify import useNotify, useChannels
 
 notify = useNotify()
 notify.add(
-    useNotifyChannels.Bark({"token": "jtgTe64kJAtq4iyj6DaepQ"}),
+    useChannels.Bark({"token": "jtgTe64kJAtq4iyj6DaepQ"}),
 )
 
 notify.publish(content="usepy")

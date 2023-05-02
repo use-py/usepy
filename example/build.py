@@ -1,8 +1,6 @@
 from docstring_parser import parse
 import inspect
 
-from usepy import useIs, useTo, uesUtils
-
 
 # 获取模块中所有方法
 def get_all_methods(module):
