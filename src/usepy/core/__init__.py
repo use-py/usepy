@@ -29,5 +29,4 @@ from .useThread import useThreadPool, useThread
 from .usePath import usePath
 
 from .useTo import (useToString, useToBytes, useToCamel, useToSnake, useToSHA1, useToMD5)
-
-# from .useIs import useIsRegexp, useIsString, useIsToken
+from .useIs import useIsRegexp, useIsString, useIsToken
