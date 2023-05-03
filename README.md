@@ -1,6 +1,7 @@
-<div align=center><img src="logo-shadow.svg" width="100" alt="logo"></div>
+<div align=center>
+<img src="logo-shadow.svg" width="100" alt="logo">
 
-# UsePy
+`usepy`是一个简单易用的Python工具库，包含了一些常用的工具函数。
 
 <a href="https://github.com/mic1on/usepy/actions/workflows/test.yml?query=event%3Apush+branch%3Amain" target="_blank">
     <img src="https://github.com/mic1on/usepy/workflows/test%20suite/badge.svg?branch=main&event=push" alt="Test">
@@ -12,8 +13,10 @@
 <a href="https://pypi.org/project/usepy" target="_blank">
     <img src="https://img.shields.io/pypi/pyversions/usepy.svg" alt="Supported Python versions">
 </a>
+</div>
 
-`usepy`是一个简单易用的Python工具库，包含了一些常用的工具函数。
+
+
 
 ### 安装
 
