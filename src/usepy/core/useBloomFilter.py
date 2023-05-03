@@ -3,6 +3,8 @@ reference
 - https://github.com/LiuXingMing/Scrapy_Redis_Bloomfilter/blob/master/bloomfilterOnRedis.py
 - https://github.com/MuggleK/CrawlersTools/blob/main/CrawlersTools/preprocess/bloom_filter.py
 """
+from typing import Tuple
+
 from .useTo import useToSHA1
 
 
@@ -51,14 +53,18 @@ class useBloomFilter(object):
             ret = ret & self.client.getbit(name, loc)
         return bool(ret)
 
-    def add(self, input_value: str) -> None:
-        """
-        插入字符串
-        :param input_value: 输入值
-        :return:
-        """
+    def _add(self, input_value: str):
         input_value = useToSHA1(input_value)
         name = f"{self.key}{str(int(input_value[0:2], 16) % self.block_num)}"
         for f in self.hash_func:
             loc = f.hash(input_value)
             self.client.setbit(name, loc, 1)
+
+    def add(self, *input_value: Tuple[str]) -> None:
+        """
+        插入字符串
+        :param input_value: 输入值
+        :return:
+        """
+        for iv in input_value:
+            self._add(iv)
