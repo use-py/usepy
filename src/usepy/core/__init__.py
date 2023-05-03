@@ -10,7 +10,10 @@ from .useAddict import useAdDict
 from .useCounter import useCounter
 
 from .useDict import useDict
-from .useList import useList
+from .useList import (
+    useList,
+    useListFilter, useListFlatten, useListDifference, useListEvery, useListSome, useListSort, useListUnique
+)
 
 from .useCatchError import useCatchError
 from .useListify import useListify

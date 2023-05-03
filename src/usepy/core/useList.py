@@ -1,4 +1,6 @@
 from typing import List, Generator, Dict, Optional, Callable, Literal, Any, Tuple, Union
+from functools import reduce
+from operator import and_, or_
 
 SortType = Optional[
     Literal["quick", "bubble", "select"]
@@ -218,3 +220,80 @@ class useList:
         """
         fn = fn or (lambda x: x)
         return [item for item in original_list if fn(item) not in exclude_list]
+
+
+def useListFilter(array: List, fn: Callable):
+    """
+    数组过滤
+    :param array: 数组
+    :param fn: 函数
+    :return:
+    """
+    return list(filter(fn, array))
+
+
+def useListFlatten(array: List):
+    """
+    数组扁平化
+    :param array: 数组
+    :return:
+    """
+    return useList.flatten(array)
+
+
+def useListDifference(original_array: List, exclude_array: List, fn: Optional[Callable] = None):
+    """
+    求差集
+    :param original_array: 原数组
+    :param exclude_array: 排除数组
+    :param fn: 函数
+    :return: 差集
+
+    >>> useListDifference([1, 2, 3], [1, 4])
+    [2, 3]
+    >>> useListDifference([{'a': 1, 'b': 2}, {'a': 2, 'b': 3}], [{'a': 1, 'b': 2}])
+    [{'a': 2, 'b': 3}]
+    >>> useListDifference([1, 2, 3], [1, 4], fn=lambda x: x ** 2)
+    [3]
+    """
+    return useList.difference(original_array, exclude_array, fn)
+
+
+def useListEvery(array: List, fn: Callable):
+    """
+    数组每一项都满足条件
+    :param array: 数组
+    :param fn: 函数
+    :return:
+    """
+    return reduce(and_, [fn(element) for element in array])
+
+
+def useListSome(array: List, fn: Callable):
+    """
+    数组有一项满足条件
+    :param array: 数组
+    :param fn: 函数
+    :return:
+    """
+    return reduce(or_, [fn(element) for element in array])
+
+
+def useListSort(array: List, algorithm: SortType = 'bubble'):
+    """
+    数组排序
+    :param array: 数组
+    :param algorithm: 排序算法, 默认冒泡排序
+    :return: 排序后数组
+    """
+    return useList.sort(array, algorithm)
+
+
+def useListUnique(array: List, fn: Optional[Callable] = None):
+    """
+    数组去重
+    :param fn:
+    :param array: 数组
+    :return: 去重后数组
+    """
+    return list(useList.dedupe(array, fn))
