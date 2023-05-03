@@ -1,3 +1,5 @@
+<div align=center><img src="logo-shadow.svg" width="100" alt="logo"></div>
+
 # UsePy
 
 <a href="https://github.com/mic1on/usepy/actions/workflows/test.yml?query=event%3Apush+branch%3Amain" target="_blank">

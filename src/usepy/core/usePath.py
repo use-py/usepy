@@ -65,7 +65,7 @@ class usePath(object):
         :param sub_dir: 是否包含子目录
         :return: 文件和目录列表
         """
-        return [p for p in UsePath._list_path(path, sub_dir) if p.is_dir()]
+        return [p for p in usePath._list_path(path, sub_dir) if p.is_dir()]
 
     @staticmethod
     def listfile(path: str, sub_dir: bool = True, suffix_list: List[str] = None) -> List[Path]:
@@ -77,7 +77,7 @@ class usePath(object):
         :return: 文件列表
         """
         suffix_list = suffix_list or []
-        return [p for p in UsePath._list_path(path, sub_dir) if p.is_file() and p.suffix in suffix_list]
+        return [p for p in usePath._list_path(path, sub_dir) if p.is_file() and p.suffix in suffix_list]
 
     @staticmethod
     def list(path: str, sub_dir: bool = True, suffix_list: List[str] = None) -> List[Path]:
@@ -89,4 +89,4 @@ class usePath(object):
         :return: 文件和目录列表
         """
         suffix_list = suffix_list or []
-        return [p for p in UsePath._list_path(path, sub_dir) if p.suffix in suffix_list]
+        return [p for p in usePath._list_path(path, sub_dir) if p.suffix in suffix_list]

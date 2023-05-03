@@ -1,5 +1,9 @@
+import re
+
 from docstring_parser import parse
 import inspect
+
+from usepy.core.useImport import useImport
 
 
 # 获取模块中所有方法
@@ -66,5 +70,26 @@ def build_module_doc(module):
     print('\n'.join(markdown))
 
 
+def make_module_doc(module):
+    print(get_module_meta(module))
+
+
 if __name__ == '__main__':
-    build_module_doc(useIs)
+
+    from usepy import core
+
+    modules = [m for m in dir(core) if not m.startswith('__')]
+    print(modules)
+    for module_name in modules:
+        _, module = useImport(f"usepy.core:{module_name}")
+        module_file_path = inspect.getfile(module)
+        with open(module_file_path, 'r', encoding='utf-8') as f:
+            module_file_content = f.read()
+        # print(module_file_content)
+        # 从源码里找出"""xx"""之间的内容，且只需要第一个
+        docstrings = re.findall(r'"""(.*?)"""', module_file_content, re.S)
+        docstring = docstrings[0] if docstrings else None
+        print(docstring)
+        if docstring is None:
+            print(module)
+            pass
