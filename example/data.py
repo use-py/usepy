@@ -1,4 +1,4 @@
-from usepy.data import useAdDict, useList, useString
+from usepy import useAdDict, useList, useStringMiddle, useStringEncode
 
 if __name__ == '__main__':
     assert list(
@@ -13,6 +13,6 @@ if __name__ == '__main__':
     assert d.a == 1
     assert d.c.e == 4
 
-    assert useString.get_middle('abc', 'a', 'c') == 'b'
+    assert useStringMiddle('abc', 'a', 'c') == 'b'
 
-    print(useString.encode('xxxx', '12345678'))
+    print(useStringEncode('xxxx', '12345678'))

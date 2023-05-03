@@ -1,16 +1,16 @@
-from usepy import useTo
+from usepy import useToString
 
 
 def demo_to():
     print("demo_to")
-    print(useTo.string('https://www.baidu.com'))
-    print(useTo.string(b'https://www.baidu.com'))
-    print(useTo.string(123))
-    print(useTo.string(123.456))
-    print(useTo.string(True))
-    print(useTo.string(None))
-    print(useTo.string([1, 2, 3]))
-    print(useTo.string({'a': 1, 'b': 2, 'c': 3}))
+    print(useToString('https://www.baidu.com'))
+    print(useToString(b'https://www.baidu.com'))
+    print(useToString(123))
+    print(useToString(123.456))
+    print(useToString(True))
+    print(useToString(None))
+    print(useToString([1, 2, 3]))
+    print(useToString({'a': 1, 'b': 2, 'c': 3}))
     pass
 
 

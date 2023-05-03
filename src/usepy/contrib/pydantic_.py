@@ -1,5 +1,5 @@
 from jmespath import search
-from pydantic import BaseModel, Field
+from pydantic import BaseModel
 from pydantic.utils import GetterDict
 
 

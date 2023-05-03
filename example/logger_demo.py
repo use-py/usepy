@@ -1,14 +1,11 @@
 from fastapi import FastAPI
 from loguru import logger
 
-from usepy.logger import (
+from usepy.integrations.useLogger import (
     useLogger,
-    useLoggerIntercept,
     useLoggerInterceptUvicorn,
-    default_handler,
-    logstash_handler
+    useLoggerHandlers
 )
-from usepy.logger import useLoggerInterceptUvicorn
 
 useLoggerInterceptUvicorn()  # 在 app 实例化前调用即可
 
@@ -28,8 +25,8 @@ if __name__ == '__main__':
     # 一键调用，配置多个 handler 和 packages
     useLogger(
         handlers=[
-            default_handler(),
-            logstash_handler(extra={"app_name": "app_name"})
+            useLoggerHandlers.default_handler(),
+            useLoggerHandlers.logstash_handler(extra={"app_name": "app_name"})
         ],
         packages=["kit", "mylib.sublib"],
         extra={"project_name": "project_name"}
@@ -59,4 +56,5 @@ if __name__ == '__main__':
     logger.opt(raw=True).debug("No formatting\n")
 
     import uvicorn
-    uvicorn.run(app="app:app", host="127.0.0.1", reload=False, workers=2)
+
+    uvicorn.run(app="logger_demo:app", host="127.0.0.1", reload=False, workers=2)
