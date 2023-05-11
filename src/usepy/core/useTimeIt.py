@@ -1,8 +1,5 @@
 import functools
 import time
-import logging
-
-logger = logging.getLogger(__name__)
 
 
 def useTimeIt(func):
@@ -15,7 +12,7 @@ def useTimeIt(func):
         t0 = time.perf_counter()
         back = func(*args, **kwargs)
         t1 = time.perf_counter()
-        logger.debug(f"{func.__name__} took {t1 - t0:.0f} seconds")
+        print(f"{func.__name__} took {t1 - t0:.0f} seconds")
         return back
 
     return _timer
