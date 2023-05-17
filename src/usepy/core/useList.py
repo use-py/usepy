@@ -1,4 +1,9 @@
-from typing import List, Generator, Dict, Optional, Callable, Literal, Any, Tuple, Union
+try:
+    from typing import Literal
+except ImportError:
+    from typing_extensions import Literal
+from typing import List, Generator, Dict, Optional, Callable, Any, Tuple, Union
+
 from functools import reduce
 from operator import and_, or_
 

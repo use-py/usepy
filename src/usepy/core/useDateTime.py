@@ -1,7 +1,11 @@
+try:
+    from typing import Literal
+except ImportError:
+    from typing_extensions import Literal
 import calendar
 from datetime import datetime, timedelta
 from itertools import chain
-from typing import Optional, Literal
+from typing import Optional
 
 UnitType = Optional[
     Literal[
