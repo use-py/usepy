@@ -1,9 +1,9 @@
 from collections import defaultdict
-from typing import List, Dict
+from typing import List, Dict, Any, Optional
 
 
 class useDict:
-
+    
     @staticmethod
     def find_keys(original_dict: Dict, val: any) -> List:
         """
@@ -15,7 +15,7 @@ class useDict:
         ['b']
         """
         return list(key for key, value in original_dict.items() if value == val)
-
+    
     @staticmethod
     def reverse(original_dict: Dict) -> Dict:
         """
@@ -26,7 +26,7 @@ class useDict:
         {1: 'a', 2: 'b', 3: 'c'}
         """
         return {v: k for k, v in original_dict.items()}
-
+    
     @staticmethod
     def sort_by_key(original_dict: Dict, az: bool = False) -> Dict:
         """
@@ -38,7 +38,7 @@ class useDict:
         {'a': 3, 'b': 2, 'c': 1}
         """
         return dict(sorted(original_dict.items(), reverse=az))
-
+    
     @staticmethod
     def sort_by_value(original_dict: Dict, az: bool = False) -> Dict:
         """
@@ -50,7 +50,7 @@ class useDict:
         {'c': 1, 'b': 2, 'a': 3}
         """
         return dict(sorted(original_dict.items(), key=lambda x: x[1], reverse=az))
-
+    
     @staticmethod
     def arrays_to_dict(keys: List, values: List) -> Dict:
         """
@@ -62,7 +62,7 @@ class useDict:
         {'a': 1, 'b': 2, 'c': 3}
         """
         return dict(zip(keys, values))
-
+    
     @staticmethod
     def merge(*dicts: Dict) -> Dict:
         """
@@ -82,7 +82,7 @@ class useDict:
         for d in dicts:
             result.update(d)
         return result
-
+    
     @staticmethod
     def merge_values(*dicts: Dict) -> Dict:
         """
@@ -97,7 +97,7 @@ class useDict:
             for key in d:
                 res[key].append(d[key])
         return dict(res)
-
+    
     @staticmethod
     def merge_value(original_dict: dict) -> dict:
         """
@@ -111,7 +111,7 @@ class useDict:
         for key, value in original_dict.items():
             res[value].append(key)
         return dict(res)
-
+    
     @staticmethod
     def deep_update(main_dict: Dict, update_dict: Dict) -> None:
         """
@@ -138,7 +138,7 @@ class useDict:
                 main_dict[key] = main_dict[key] + update_dict[key]
             else:
                 main_dict[key] = value
-
+    
     @staticmethod
     def expand(source: dict, with_parent: bool = False, parent='') -> dict:
         """
@@ -167,25 +167,35 @@ class useDict:
             else:
                 result[new_key] = value
         return result
-
+    
     @staticmethod
-    def pops(data: dict, keys: list) -> dict:
+    def pops(data: dict, keys: list, **kwargs) -> dict:
         """
         从字典中弹出指定的多个键值对
 
         :param data: 原始字典
         :param keys: 键列表
+        :param kwargs: 仅可传递 default 参数，如果传递了该参数，则 keys 中不存在于 data 中的 key 会在返回的字典中被赋值为该值
         :return: 弹出的键值对
-
+        
+        >>> # 未指定 default 参数
         >>> useDict.pops({'a': 1, 'b': 2, 'c': 3}, ['a', 'c'])
         {'a': 1, 'c': 3}
+        >>> # 指定 default 参数
+        >>> useDict.pops({'a': 1, 'b': 2, 'c': 3}, ['a', 'd'], default=0)
+        {'a': 1, 'd': 0}
+        >>> # 指定 default 参数为 None
+        >>> useDict.pops({'a': 1, 'b': 2, 'c': 3}, ['a', 'd'], default=None)
+        {'a': 1, 'd': None}
         """
         res = {}
         for key in keys:
             if key in data:
                 res[key] = data.pop(key)
+            elif 'default' in kwargs:
+                res[key] = kwargs['default']
         return res
-
+    
     @staticmethod
     def pops_by_key_prefix(data: dict, key_prefix: str) -> dict:
         """
@@ -203,7 +213,7 @@ class useDict:
             if key.startswith(key_prefix):
                 res[key] = data.pop(key)
         return res
-
+    
     @staticmethod
     def delete_keys(data: dict, keys: list) -> None:
         """
@@ -219,7 +229,7 @@ class useDict:
         for key in keys:
             if key in data:
                 del data[key]
-
+    
     @staticmethod
     def delete_keys_by_key_prefix(data: dict, key_prefix: str) -> None:
         """
@@ -235,7 +245,7 @@ class useDict:
         for key in list(data.keys()):
             if key.startswith(key_prefix):
                 del data[key]
-
+    
     @staticmethod
     def replace_keys(data: dict, mapping: dict) -> dict:
         """
