@@ -20,6 +20,7 @@ class Dict(dict):
     def __init__(__self, *args, **kwargs):
         super().__init__()
         object.__setattr__(__self, '__parent', kwargs.pop('__parent', None))
+        object.__setattr__(__self, '__auto_convert', kwargs.pop('auto_convert', False))
         object.__setattr__(__self, '__key', kwargs.pop('__key', None))
         object.__setattr__(__self, '__frozen', False)
         for arg in args:
@@ -49,6 +50,9 @@ class Dict(dict):
                     object.__getattribute__(self, '__frozen'))
         if isFrozen and name not in super(Dict, self).keys():
             raise KeyError(name)
+        if object.__getattribute__(self, '__auto_convert') and isinstance(value, dict) and not isinstance(value,
+                                                                                                          useAdDict):
+            value = self._hook(value)
         super(Dict, self).__setitem__(name, value)
         try:
             p = object.__getattribute__(self, '__parent')
