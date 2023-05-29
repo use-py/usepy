@@ -46,12 +46,13 @@ class Dict(dict):
             self[name] = value
 
     def __setitem__(self, name, value):
-        isFrozen = (hasattr(self, '__frozen') and
-                    object.__getattribute__(self, '__frozen'))
-        if isFrozen and name not in super(Dict, self).keys():
+        is_frozen = (hasattr(self, '__frozen') and
+                     object.__getattribute__(self, '__frozen'))
+        if is_frozen and name not in super(Dict, self).keys():
             raise KeyError(name)
-        if object.__getattribute__(self, '__auto_convert') and isinstance(value, dict) and not isinstance(value,
-                                                                                                          useAdDict):
+        is_auto_convert = (hasattr(self, '__auto_convert') and
+                           object.__getattribute__(self, '__auto_convert'))
+        if is_auto_convert and isinstance(value, dict) and not isinstance(value, useAdDict):
             value = self._hook(value)
         super(Dict, self).__setitem__(name, value)
         try:
