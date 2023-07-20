@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "usepy"
-version = "0.2.41"
+version = "0.2.5"
 description = "usepy"
 homepage = "https://usepy.code05.com/"
 authors = ["miclon <jcnd@163.com>"]
@@ -10,7 +10,7 @@ packages = [
 ]
 
 [tool.poetry.dependencies]
-python = "^3.6"
+python = "^3.7"
 typing-extensions = [
     { version = "^4.0.0", python = ">=3.6,<3.7" },
     { version = "^4.5.0", python = ">=3.7" }
