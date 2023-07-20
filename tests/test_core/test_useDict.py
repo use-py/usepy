@@ -1,4 +1,4 @@
-from usepy import useAdDict, useList, useString, useDict
+from usepy import useAdDict, useList, useDict
 
 
 def test_use_addict():

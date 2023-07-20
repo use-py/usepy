@@ -20,7 +20,7 @@ import shlex
 from collections import OrderedDict
 from typing import Optional, Dict, Generator, Tuple
 
-from usepy.crawl import useCookieToDict
+from usepy import useCookieToDict
 
 
 def normalize_newlines(multiline_text):

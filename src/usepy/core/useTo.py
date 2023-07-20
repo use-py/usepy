@@ -1,6 +1,8 @@
 import hashlib
 import re
-from typing import AnyStr
+from typing import AnyStr, Optional
+
+from usepy.vars import EMPTY_VALUES
 
 
 def useToString(s, encoding=None, errors='strict'):
@@ -81,3 +83,27 @@ def useToSnake(data: str, char: str = '_') -> str:
     'test-case'
     """
     return re.sub(r'([A-Z])', lambda m: char + m.group(1).lower(), data)
+
+
+def useToBoolean(value: any) -> Optional[bool]:
+    """
+    将数据转换为布尔值
+    :param value:
+    :return:
+    """
+    if value in list(EMPTY_VALUES):
+        return None
+    if isinstance(value, bool):
+        return value
+    if isinstance(value, str):
+        value = value.lower()
+        if value in ('t', 'true', '1'):
+            return True
+        elif value in ('f', 'false', '0'):
+            return False
+    raise ValueError("unrecognized")
+
+
+if __name__ == '__main__':
+    useToBoolean(True)
+    useToBoolean(1)
