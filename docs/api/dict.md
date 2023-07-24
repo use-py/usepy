@@ -11,7 +11,7 @@ python中的字典数据结构的功能扩展
 用于解决字典取值繁琐的问题。
 
 ```python
-from usepy.data import useAdDict
+from usepy import useAdDict
 
 d = useAdDict({'a': 1, 'b': 2, 'c': {'d': 3, 'e': 4}})
 assert d.a == 1
