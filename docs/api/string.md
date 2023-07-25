@@ -197,7 +197,7 @@ def useRandomString(min_len=3, max_len=20, characters=None):
 获取字符串左边的内容。
 
 ```python
-def get_left(
+def useStringLeft(
         original_str: str,
         end_str: str
 ) -> Optional[str]:
@@ -206,10 +206,10 @@ def get_left(
     :param original_str: 原始字符串
     :param end_str: 结束字符串
     :return: 左边内容
-    >>> UseString.get_left('abc123def', 'def')
+    >>> useStringLeft('abc123def', 'def')
     'abc123'
     """
-    find_str, _, _ = UseString._get_section(original_str, end_str=end_str)
+    find_str, _, _ = get_section(original_str, end_str=end_str)
     return find_str
 ```
 
