@@ -30,7 +30,6 @@ def to_str(s, encoding=None, errors='strict'):
     return s.decode(encoding or 'utf-8', errors)
 ```
 
-
 ### to_bytes
 
 将对象转换为bytes。
@@ -50,26 +49,6 @@ def to_bytes(s, encoding=None, errors='strict'):
         return bytes(s)
     return s.encode(encoding or 'utf-8', errors)
 ```
-
-
-### random
-
-生成随机字符串。
-
-```python
-def random(min_len=3, max_len=20, characters=None):
-    """
-    生成随机字符串
-    :param min_len: 最小长度
-    :param max_len: 最大长度
-    :param characters: 字符集
-    :return: 随机字符串
-    """
-    characters = characters or _characters
-    _len = randint(min_len, max_len) if max_len > min_len else min_len
-    return ''.join((choice(characters) for _ in range(_len)))
-```
-
 
 ### get_middle
 
@@ -93,7 +72,6 @@ def get_middle(
     find_str, _, _ = UseString._get_section(original_str, start_str, end_str)
     return find_str
 ```
-
 
 ### get_middle_batch
 
@@ -124,62 +102,6 @@ def get_middle_batch(
     return result
 ```
 
-
-### get_left
-
-获取字符串左边的内容。
-
-```python
-def get_left(
-        original_str: str,
-        end_str: str
-) -> Optional[str]:
-    """
-    获取字符串左边内容
-    :param original_str: 原始字符串
-    :param end_str: 结束字符串
-    :return: 左边内容
-    >>> UseString.get_left('abc123def', 'def')
-    'abc123'
-    """
-    find_str, _, _ = UseString._get_section(original_str, end_str=end_str)
-    return find_str
-```
-
-
-### get_right
-
-获取字符串右边的内容。
-
-```python
-def get_right(
-        original_str: str,
-        start_str: str
-) -> Optional[str]:
-    """
-    获取字符串右边内容
-    :param original_str: 原始字符串
-    :param start_str: 开始字符串
-    :return: 右边内容
-    >>> UseString.get_right('abc123def', 'abc')
-    '123def'
-    """
-    find_str, _, _ = UseString._get_section(original_str, start_str=start_str)
-    return find_str
-```
-
-
-### uuid
-
-生成uuid。
-
-```python
-@staticmethod
-def uuid():
-    return f"{uuid4().hex}"
-```
-
-
 ### reverse
 
 反转字符串。
@@ -195,7 +117,6 @@ def reverse(original_str: str) -> str:
     """
     return original_str[::-1]
 ```
-
 
 ### encode
 
@@ -218,7 +139,6 @@ def encode(original_str: str, key: str) -> str:
     return base64.urlsafe_b64encode(encoded_string.encode('utf-8')).decode('utf-8')
 ```
 
-
 ### decode
 
 自定义密码解密字符串。
@@ -240,3 +160,77 @@ def decode(original_str: str, key: str) -> str:
     decoded_string = "".join(decoded_chars)
     return decoded_string
 ```
+
+## useRandomUUID
+
+生成uuid。
+
+```python
+def useRandomUUID():
+    from uuid import uuid4
+    return f"{uuid4().hex}"
+```
+
+## useRandomString
+
+生成随机字符串。
+
+```python
+def useRandomString(min_len=3, max_len=20, characters=None):
+    """
+    生成随机字符串
+    :param min_len: 最小长度
+    :param max_len: 最大长度
+    :param characters: 字符集
+    :return: 随机字符串
+    """
+    import string
+
+    _characters = string.ascii_letters + string.digits
+    characters = characters or _characters
+    _len = randint(min_len, max_len) if max_len > min_len else min_len
+    return ''.join((choice(characters) for _ in range(_len)))
+```
+
+## useStringLeft
+
+获取字符串左边的内容。
+
+```python
+def get_left(
+        original_str: str,
+        end_str: str
+) -> Optional[str]:
+    """
+    获取字符串左边内容
+    :param original_str: 原始字符串
+    :param end_str: 结束字符串
+    :return: 左边内容
+    >>> UseString.get_left('abc123def', 'def')
+    'abc123'
+    """
+    find_str, _, _ = UseString._get_section(original_str, end_str=end_str)
+    return find_str
+```
+
+## useStringRight
+
+获取字符串右边的内容。
+
+```python
+def useStringRight(
+        original_str: str,
+        start_str: str
+) -> Optional[str]:
+    """
+    获取字符串右边内容
+    :param original_str: 原始字符串
+    :param start_str: 开始字符串
+    :return: 右边内容
+    >>> useStringRight('abc123def', 'abc')
+    '123def'
+    """
+    find_str, _, _ = get_section(original_str, start_str=start_str)
+    return find_str
+```
+
