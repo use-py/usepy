@@ -140,6 +140,10 @@ export default withPwa(defineConfig({
               text: 'useParser',
               link: '/api/parser',
             },
+            {
+              text: 'useSnowflakeId',
+              link: '/api/useSnowflakeId',
+            },
           ],
         },
         {
