@@ -69,7 +69,7 @@ export default withPwa(defineConfig({
     ],
 
     footer: {
-      message: 'Released under the MIT License. Based on Vitest.',
+      message: 'Released under the MIT License.',
       copyright: 'Copyright © 2023 MicLon',
     },
 
