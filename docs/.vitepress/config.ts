@@ -1,4 +1,5 @@
 import { defineConfig } from 'vitepress'
+import type { DefaultTheme } from 'vitepress/types/default-theme'
 import { withPwa } from '@vite-pwa/vitepress'
 import {
   font,
@@ -10,6 +11,10 @@ import {
 } from './meta'
 import { pwa } from './scripts/pwa'
 import { transformHead } from './scripts/transformHead'
+
+interface SidebarItem extends DefaultTheme.SidebarItem {
+  tags?: string[]
+}
 
 export default withPwa(defineConfig({
   lang: 'zh-CN',
@@ -104,8 +109,12 @@ export default withPwa(defineConfig({
           ],
         },
         {
-          text: 'API',
+          text: 'Core',
           items: [
+            {
+              text: 'useAdDict',
+              link: '/api/addict',
+            },
             {
               text: 'useDict',
               link: '/api/dict',
@@ -113,6 +122,10 @@ export default withPwa(defineConfig({
             {
               text: 'useList',
               link: '/api/list',
+            },
+            {
+              text: 'useBloomFilter',
+              link: '/api/bloom_filter',
             },
             {
               text: 'useString',
@@ -194,7 +207,7 @@ export default withPwa(defineConfig({
             }
           ],
         },
-      ],
+      ] as SidebarItem[],
     },
   },
   pwa,

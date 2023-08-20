@@ -7,10 +7,10 @@ export const transformHead = async ({ pageData }: TransformContext): Promise<Hea
 
   const home = pageData.relativePath === 'index.md'
 
-  ;(home ? preconnectHomeLinks : preconnectLinks).forEach((link) => {
-    head.push(['link', { rel: 'dns-prefetch', href: link }])
-    head.push(['link', { rel: 'preconnect', href: link }])
-  })
+    ; (home ? preconnectHomeLinks : preconnectLinks).forEach((link) => {
+      head.push(['link', { rel: 'dns-prefetch', href: link }])
+      head.push(['link', { rel: 'preconnect', href: link }])
+    })
 
   head.push(['link', { rel: 'prefetch', href: '/logo.svg' }])
   if (home)

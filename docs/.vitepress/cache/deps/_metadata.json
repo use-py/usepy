@@ -1,13 +1,23 @@
 {
-  "hash": "6245974f",
-  "browserHash": "e656c992",
+  "hash": "2a0497e2",
+  "browserHash": "48eed450",
   "optimized": {
     "vue": {
-      "src": "../../../node_modules/.pnpm/vue@3.2.47/node_modules/vue/dist/vue.runtime.esm-bundler.js",
+      "src": "../../../node_modules/.pnpm/vue@3.3.4/node_modules/vue/dist/vue.runtime.esm-bundler.js",
       "file": "vue.js",
-      "fileHash": "b1fe37e6",
+      "fileHash": "6cb2865f",
+      "needsInterop": false
+    },
+    "@vueuse/core": {
+      "src": "../../../node_modules/.pnpm/@vueuse+core@9.12.0_vue@3.3.4/node_modules/@vueuse/core/index.mjs",
+      "file": "@vueuse_core.js",
+      "fileHash": "cc8a3d05",
       "needsInterop": false
     }
   },
-  "chunks": {}
+  "chunks": {
+    "chunk-WICYTZ2N": {
+      "file": "chunk-WICYTZ2N.js"
+    }
+  }
 }
