@@ -55,6 +55,7 @@ __all__ = [
     'useToCamel',
     'useToSnake',
     'useToBoolean',
+    'useSnowflakeId',
 
     # crawl
     'useCookieToDict',
