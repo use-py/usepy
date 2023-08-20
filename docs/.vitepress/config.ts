@@ -40,10 +40,7 @@ export default withPwa(defineConfig({
   ],
   lastUpdated: true,
   markdown: {
-    theme: {
-      light: 'vitesse-dark',
-      dark: 'vitesse-dark',
-    },
+    theme: 'vitesse-dark',
   },
   themeConfig: {
     logo: '/logo.png',
