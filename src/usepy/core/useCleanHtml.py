@@ -1,11 +1,10 @@
 from html.parser import HTMLParser
-
+from contextlib import contextmanager
 
 class TagStripper(HTMLParser):
     def __init__(self, white_tags=None):
         super().__init__()
-        self.white_tags = white_tags or []
-        self.reset()
+        self.white_tags = [tag.lower() for tag in white_tags] if white_tags else []
         self.fed = []
 
     def handle_data(self, d):
@@ -22,6 +21,11 @@ class TagStripper(HTMLParser):
     def get_data(self):
         return ''.join(self.fed)
 
+    def close(self) -> None:
+        super().close()
+        self.fed.clear()
+
+
 
 def useCleanHtml(html: str, white_tags=None) -> str:
     """
@@ -31,4 +35,15 @@ def useCleanHtml(html: str, white_tags=None) -> str:
     """
     ts = TagStripper(white_tags=white_tags)
     ts.feed(html)
+    ts.close()
     return ts.get_data()
+
+
+@contextmanager
+def cleanHtml(html: str, white_tags=None) -> TagStripper:
+    ts = TagStripper(white_tags)
+    ts.feed(html)
+    try:
+        yield ts
+    finally:
+        ts.close()
