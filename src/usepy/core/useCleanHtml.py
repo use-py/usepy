@@ -1,6 +1,7 @@
 from html.parser import HTMLParser
 from contextlib import contextmanager
 
+
 class TagStripper(HTMLParser):
     def __init__(self, white_tags=None):
         super().__init__()
@@ -26,7 +27,6 @@ class TagStripper(HTMLParser):
         self.fed.clear()
 
 
-
 def useCleanHtml(html: str, white_tags=None) -> str:
     """
     清除HTML标签
@@ -35,8 +35,9 @@ def useCleanHtml(html: str, white_tags=None) -> str:
     """
     ts = TagStripper(white_tags=white_tags)
     ts.feed(html)
+    data = ts.get_data()
     ts.close()
-    return ts.get_data()
+    return data
 
 
 @contextmanager
