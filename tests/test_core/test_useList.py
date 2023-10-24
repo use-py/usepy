@@ -1,7 +1,7 @@
 import pytest
 
 from usepy import useList, useListFilter, useListFlatten, useListDifference, useListEvery, useListSome, useListSort, \
-    useListUnique
+    useListUnique, useListMergeByKey
 
 
 def test_split():
@@ -118,3 +118,15 @@ def test_useListEvery(array, fn, expected):
 )
 def test_useListSome(array, fn, expected):
     assert useListSome(array, fn) == expected
+
+
+@pytest.mark.parametrize(
+    "array1,array2,key,expected",
+    [
+        ([{"id": 1, "age": 18}], [{"id": 1, "name": "miclon"}], "id", [{"id": 1, "age": 18, "name": "miclon"}]),
+        ([{"id": 1, "age": 18}], [{"name": "miclon"}], "id", [{'id': 1, "age": 18}, {'name': 'miclon'}]),
+        ([{"id": 1, "age": 18}], [], "id", [{"id": 1, "age": 18}]),
+    ]
+)
+def test_useListMergeByKey(array1, array2, key, expected):
+    assert useListMergeByKey(array1, array2, key) == expected

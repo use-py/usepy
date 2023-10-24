@@ -20,6 +20,7 @@ def tag_stripper():
     yield ts
     ts.close()
 
+
 def test_close_method(tag_stripper):
     extracted_data = tag_stripper.get_data()
     assert extracted_data == "<h1>Title</h1>"
