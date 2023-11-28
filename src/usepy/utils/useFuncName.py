@@ -7,4 +7,4 @@ def useFuncName(cls=None):
     :param cls: 类对象
     :return: 格式：[cls_name.]func_name
     """
-    return ('' if cls is None else cls.__class__.__name__ + '.') + inspect.stack()[1][3]
+    return ("" if cls is None else cls.__class__.__name__ + ".") + inspect.stack()[1][3]

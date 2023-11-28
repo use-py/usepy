@@ -9,9 +9,9 @@ class Getter(GetterDict):
     """
 
     def get(self, key, default):  # noqa
-        model, data = self._obj['model'], self._obj['data']
+        model, data = self._obj["model"], self._obj["data"]
         for name, field in model.__fields__.items():
-            path = field.field_info.extra.get('path')
+            path = field.field_info.extra.get("path")
             if path and name == key:
                 return search(path, data)
         return default

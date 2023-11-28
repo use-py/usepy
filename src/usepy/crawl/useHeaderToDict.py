@@ -4,4 +4,8 @@ def useHeaderToDict(headers: str) -> dict:
     :param headers: headers字符串
     :return: dict
     """
-    return dict(map(lambda x: x.strip(), line.split(':')) for line in headers.split('\n') if ':' in line)  # noqa
+    return dict(
+        map(lambda x: x.strip(), line.split(":"))
+        for line in headers.split("\n")
+        if ":" in line
+    )  # noqa

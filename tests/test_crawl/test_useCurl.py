@@ -23,8 +23,8 @@ def test_curl():
           --compressed
           """
     curl = useCURL(test_curl_command)
-    assert curl.url == 'https://www.baidu.com/'
-    assert curl.method == 'GET'
+    assert curl.url == "https://www.baidu.com/"
+    assert curl.method == "GET"
     assert not curl.data
     assert len(curl.headers.keys()) == 15
     assert len(curl.cookies.keys()) == 1

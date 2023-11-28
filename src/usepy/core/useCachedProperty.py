@@ -8,7 +8,7 @@ def useCachedProperty(func):
     >>> def demo(self):
     >>>     return 1
     """
-    prop_name = '_{}'.format(func.__name__)
+    prop_name = "_{}".format(func.__name__)
 
     @functools.wraps(func)
     def wrapped_func(self, *args, **kwargs):

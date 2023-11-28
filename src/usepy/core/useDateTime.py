@@ -9,7 +9,12 @@ from typing import Optional
 
 UnitType = Optional[
     Literal[
-        "year", "month", "day", "today", "hour", "minute",
+        "year",
+        "month",
+        "day",
+        "today",
+        "hour",
+        "minute",
     ]
 ]
 
@@ -21,7 +26,7 @@ DATETIME_COMMON = (
     "%Y年%m月%d日%H:%M:%S",
     "%Y年%m月%d日 %H:%M:%S",
     "%Y年%m月%d日%H时%M分%S秒",
-    "%Y年%m月%d日 %H时%M分%S秒"
+    "%Y年%m月%d日 %H时%M分%S秒",
 )
 DATE_FORMATS = (
     "%Y-%m-%d",
@@ -39,19 +44,19 @@ DATETIME_FORMATS = list(
         [
             ["{} %H:%M:%S".format(fmt) for fmt in DATE_FORMATS],
             ["{} %H:%M".format(fmt) for fmt in DATE_FORMATS],
-            ["{}T%H:%M:%S.%f%z".format(fmt) for fmt in DATE_FORMATS]
+            ["{}T%H:%M:%S.%f%z".format(fmt) for fmt in DATE_FORMATS],
         ]
     )
 )
 
 
 class useDateTime:
-    DAYS = 'days'
-    HOURS = 'hours'
-    MINUTES = 'minutes'
-    SECONDS = 'seconds'
-    MILLISECONDS = 'milliseconds'
-    MICROSECONDS = 'microseconds'
+    DAYS = "days"
+    HOURS = "hours"
+    MINUTES = "minutes"
+    SECONDS = "seconds"
+    MILLISECONDS = "milliseconds"
+    MICROSECONDS = "microseconds"
 
     @staticmethod
     def now() -> datetime:
@@ -61,7 +66,9 @@ class useDateTime:
         """
         return datetime.now()
 
-    format_now = staticmethod(lambda fmt=None: useDateTime.format(useDateTime.now(), fmt))
+    format_now = staticmethod(
+        lambda fmt=None: useDateTime.format(useDateTime.now(), fmt)
+    )
 
     @staticmethod
     def last(dt: datetime, unit: UnitType) -> datetime:
@@ -73,12 +80,12 @@ class useDateTime:
         """
         last_dt = dt.replace(hour=23, minute=59, second=59, microsecond=999999)
         unit_map = {
-            'year': lambda x: x.replace(month=12, day=31),
-            'month': lambda x: x.replace(day=calendar.monthrange(x.year, x.month)[1]),
-            'day': lambda x: x,
-            'today': lambda x: x,
-            'hour': lambda x: x.replace(hour=dt.hour),
-            'minute': lambda x: x.replace(hour=dt.hour, minute=dt.minute)
+            "year": lambda x: x.replace(month=12, day=31),
+            "month": lambda x: x.replace(day=calendar.monthrange(x.year, x.month)[1]),
+            "day": lambda x: x,
+            "today": lambda x: x,
+            "hour": lambda x: x.replace(hour=dt.hour),
+            "minute": lambda x: x.replace(hour=dt.hour, minute=dt.minute),
         }
         return unit_map.get(unit, lambda x: x)(last_dt)
 
@@ -92,12 +99,12 @@ class useDateTime:
         """
         first_dt = dt.replace(hour=0, minute=0, second=0, microsecond=0)
         unit_map = {
-            'year': lambda x: x.replace(month=1, day=1),
-            'month': lambda x: x.replace(day=1),
-            'day': lambda x: x,
-            'today': lambda x: x,
-            'hour': lambda x: x.replace(hour=dt.hour),
-            'minute': lambda x: x.replace(hour=dt.hour, minute=dt.minute)
+            "year": lambda x: x.replace(month=1, day=1),
+            "month": lambda x: x.replace(day=1),
+            "day": lambda x: x,
+            "today": lambda x: x,
+            "hour": lambda x: x.replace(hour=dt.hour),
+            "minute": lambda x: x.replace(hour=dt.hour, minute=dt.minute),
         }
         return unit_map.get(unit, lambda x: x)(first_dt)
 
@@ -120,7 +127,7 @@ class useDateTime:
         elif digit == 13:
             return int(dt.timestamp() * 1000)
         else:
-            raise ValueError('digit must be 10 or 13')
+            raise ValueError("digit must be 10 or 13")
 
     @staticmethod
     def format(dt: datetime, fmt=None) -> str:
@@ -130,7 +137,7 @@ class useDateTime:
         :param fmt: 时间格式
         :return: 时间
         """
-        _fmt = fmt or '%Y-%m-%d %H:%M:%S'
+        _fmt = fmt or "%Y-%m-%d %H:%M:%S"
         return dt.strftime(_fmt)
 
     @staticmethod
@@ -141,11 +148,13 @@ class useDateTime:
         :param unit: 单位，支持：days[默认], seconds, microseconds, milliseconds, minutes, hours, weeks
         :return: 时间
         """
-        _unit = unit or 'days'
+        _unit = unit or "days"
         return datetime.now() - timedelta(**{_unit: nums})
 
     format_before = staticmethod(
-        lambda nums, unit=None, fmt=None: useDateTime.format(useDateTime.before(nums, unit), fmt)
+        lambda nums, unit=None, fmt=None: useDateTime.format(
+            useDateTime.before(nums, unit), fmt
+        )
     )
 
     @staticmethod
@@ -156,11 +165,13 @@ class useDateTime:
         :param unit: 单位，支持：days[默认], seconds, microseconds, milliseconds, minutes, hours, weeks
         :return: 时间
         """
-        _unit = unit or 'days'
+        _unit = unit or "days"
         return datetime.now() + timedelta(**{_unit: nums})
 
     format_after = staticmethod(
-        lambda nums, unit=None, fmt=None: useDateTime.format(useDateTime.after(nums, unit), fmt)
+        lambda nums, unit=None, fmt=None: useDateTime.format(
+            useDateTime.after(nums, unit), fmt
+        )
     )
 
     @staticmethod
@@ -174,9 +185,9 @@ class useDateTime:
         s = time_str.strip()
         if fmt is not None:
             return datetime.strptime(s, fmt)
-        for fmt in chain.from_iterable((DATETIME_COMMON,
-                                        DATETIME_FORMATS,
-                                        DATE_FORMATS)):
+        for fmt in chain.from_iterable(
+            (DATETIME_COMMON, DATETIME_FORMATS, DATE_FORMATS)
+        ):
             try:
                 return datetime.strptime(s, fmt)
             except ValueError:
@@ -196,22 +207,22 @@ class useDateTime:
 
         diff_seconds = diff_dt.total_seconds()
         if 0 <= diff_seconds <= 60:
-            return '刚刚'
+            return "刚刚"
 
         chunks = (
-            (60 * 60 * 24 * 365, '年'),
-            (60 * 60 * 24 * 30, '月'),
-            (60 * 60 * 24 * 7, '周'),
-            (60 * 60 * 24, '天'),
-            (60 * 60, '小时'),
-            (60, '分钟'),
+            (60 * 60 * 24 * 365, "年"),
+            (60 * 60 * 24 * 30, "月"),
+            (60 * 60 * 24 * 7, "周"),
+            (60 * 60 * 24, "天"),
+            (60 * 60, "小时"),
+            (60, "分钟"),
         )
         er_val = 10  # 误差值
-        tense = '前' if diff_seconds > 0 else '后'
+        tense = "前" if diff_seconds > 0 else "后"
         diff_seconds = abs(diff_seconds)
 
         for seconds, unit in chunks:
             count = (diff_seconds + er_val) // seconds
             if count != 0:
                 return str(int(count)) + unit + tense
-        return '未知'
+        return "未知"

@@ -14,4 +14,4 @@ def useStringEncode(original_str: str, key: str) -> str:
         encoded_c = chr(ord(original_str[i]) + ord(key_c) % 256)
         encoded_chars.append(encoded_c)
     encoded_string = "".join(encoded_chars)
-    return base64.urlsafe_b64encode(encoded_string.encode('utf-8')).decode('utf-8')
+    return base64.urlsafe_b64encode(encoded_string.encode("utf-8")).decode("utf-8")

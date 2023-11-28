@@ -2,9 +2,7 @@ from typing import Optional, Tuple
 
 
 def get_section(
-        original_str: str,
-        start_str: Optional[str] = None,
-        end_str: Optional[str] = None
+    original_str: str, start_str: Optional[str] = None, end_str: Optional[str] = None
 ) -> Tuple[Optional[str], Optional[int], Optional[int]]:
     """
     获取字符串区间内容
@@ -37,9 +35,7 @@ def get_section(
 
 
 def useStringMiddle(
-        original_str: str,
-        start_str: Optional[str] = None,
-        end_str: Optional[str] = None
+    original_str: str, start_str: Optional[str] = None, end_str: Optional[str] = None
 ) -> Optional[str]:
     """
     获取字符串中间内容
@@ -55,10 +51,10 @@ def useStringMiddle(
 
 
 def useStringMiddleBatch(
-        original_str: str,
-        start_str: Optional[str] = None,
-        end_str: Optional[str] = None,
-        max_count: Optional[int] = None
+    original_str: str,
+    start_str: Optional[str] = None,
+    end_str: Optional[str] = None,
+    max_count: Optional[int] = None,
 ) -> list:
     """
     获取字符串中间内容
@@ -78,14 +74,11 @@ def useStringMiddleBatch(
         if find_str is None:
             break
         result.append(find_str)
-        original_str = original_str[end_ + len(end_str or ''):]
+        original_str = original_str[end_ + len(end_str or "") :]
     return result[:max_count]
 
 
-def useStringLeft(
-        original_str: str,
-        end_str: str
-) -> Optional[str]:
+def useStringLeft(original_str: str, end_str: str) -> Optional[str]:
     """
     获取字符串左边内容
     :param original_str: 原始字符串
@@ -98,10 +91,7 @@ def useStringLeft(
     return find_str
 
 
-def useStringRight(
-        original_str: str,
-        start_str: str
-) -> Optional[str]:
+def useStringRight(original_str: str, start_str: str) -> Optional[str]:
     """
     获取字符串右边内容
     :param original_str: 原始字符串

@@ -18,10 +18,13 @@ typing-extensions = [
 
 
 [tool.poetry.group.test.dependencies]
-pytest = [
-    { version = "^7.0.0", python = ">=3.6,<3.7" },
-    { version = "^7.3.1", python = ">=3.7" }
-]
+pylint = "*"
+pytest = "*"
+black = "*"
+flake8 = "*"
+isort = "*"
+pre-commit = "*"
+pre-commit-hooks = "*"
 
 [build-system]
 requires = ["poetry-core"]

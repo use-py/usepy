@@ -7,15 +7,19 @@ from typing import Dict
 
 
 class useTimer(object):
-    __slots__ = ['_name', '_timer', '_fn', '_interval', '_ignore_ex', '_on_result', '_on_exception',
-                 '_args', '_kwargs']
+    __slots__ = [
+        "_name",
+        "_timer",
+        "_fn",
+        "_interval",
+        "_ignore_ex",
+        "_on_result",
+        "_on_exception",
+        "_args",
+        "_kwargs",
+    ]
 
-    def __init__(self,
-                 name,
-                 fn,
-                 interval=7,
-                 *args,
-                 **kwargs):
+    def __init__(self, name, fn, interval=7, *args, **kwargs):
         """
         Timer
         :param name:  timer name
@@ -58,7 +62,9 @@ class useTimer(object):
         return self
 
     @property
-    def interval(self, ):
+    def interval(
+        self,
+    ):
         return self._interval
 
     def set_interval(self, interval):
@@ -110,7 +116,9 @@ class useTimer(object):
                 if not self._ignore_ex:
                     # stop timer
                     raise ex
-        self._timer = threading.Timer(self._interval, self.scheduler, kwargs={"immediate": True})
+        self._timer = threading.Timer(
+            self._interval, self.scheduler, kwargs={"immediate": True}
+        )
         self._timer.start()
 
     def cancel(self):
@@ -119,14 +127,16 @@ class useTimer(object):
 
 
 class useTimerManager(object):
-    def __init__(self, ):
+    def __init__(
+        self,
+    ):
         self._timers_container: Dict[str, useTimer] = {}
         self._executed = False
 
     def all_timers(self) -> Dict[str, useTimer]:
         return self._timers_container
 
-    def add_timer(self, *timer: useTimer) -> 'useTimerManager':
+    def add_timer(self, *timer: useTimer) -> "useTimerManager":
         """
         add timer to manager
         :param timer: Timer

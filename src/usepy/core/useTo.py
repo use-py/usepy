@@ -5,7 +5,7 @@ from typing import AnyStr, Optional
 from usepy.vars import EMPTY_VALUES
 
 
-def useToString(s, encoding=None, errors='strict'):
+def useToString(s, encoding=None, errors="strict"):
     """
     将 bytes 或者 bytearray 转换为 str
     :param s: bytes 或者 bytearray
@@ -17,10 +17,10 @@ def useToString(s, encoding=None, errors='strict'):
         return s
     if not isinstance(s, (bytes, bytearray)):
         return str(s)
-    return s.decode(encoding or 'utf-8', errors)
+    return s.decode(encoding or "utf-8", errors)
 
 
-def useToBytes(s, encoding=None, errors='strict'):
+def useToBytes(s, encoding=None, errors="strict"):
     """
     将 str 转换为 bytes
     :param s: str
@@ -32,7 +32,7 @@ def useToBytes(s, encoding=None, errors='strict'):
         return s
     if not isinstance(s, str):
         return bytes(s)
-    return s.encode(encoding or 'utf-8', errors)
+    return s.encode(encoding or "utf-8", errors)
 
 
 def useToMD5(data: AnyStr) -> str:
@@ -53,7 +53,7 @@ def useToSHA1(data: AnyStr) -> str:
     return hashlib.sha1(useToString(data).encode()).hexdigest()
 
 
-def useToCamel(data: str, char: str = '-') -> str:
+def useToCamel(data: str, char: str = "-") -> str:
     """
     将字符数据转换为驼峰命名
     :param data: data
@@ -66,10 +66,10 @@ def useToCamel(data: str, char: str = '-') -> str:
     >>> useToCamel("test_case", char="_")
     'testCase'
     """
-    return re.sub(char + r'(\w)', lambda m: m.group(1).upper(), data)
+    return re.sub(char + r"(\w)", lambda m: m.group(1).upper(), data)
 
 
-def useToSnake(data: str, char: str = '_') -> str:
+def useToSnake(data: str, char: str = "_") -> str:
     """
     将字符数据转换为下划线命名
     :param data: data
@@ -82,7 +82,7 @@ def useToSnake(data: str, char: str = '_') -> str:
     >>> useToSnake("testCase", char="-")
     'test-case'
     """
-    return re.sub(r'([A-Z])', lambda m: char + m.group(1).lower(), data)
+    return re.sub(r"([A-Z])", lambda m: char + m.group(1).lower(), data)
 
 
 def useToBoolean(value: any) -> Optional[bool]:
@@ -97,13 +97,13 @@ def useToBoolean(value: any) -> Optional[bool]:
         return value
     if isinstance(value, str):
         value = value.lower()
-        if value in ('t', 'true', '1'):
+        if value in ("t", "true", "1"):
             return True
-        elif value in ('f', 'false', '0'):
+        elif value in ("f", "false", "0"):
             return False
     raise ValueError("unrecognized")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     useToBoolean(True)
     useToBoolean(1)

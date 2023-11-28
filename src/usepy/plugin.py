@@ -1,15 +1,18 @@
 import functools
 import importlib
 import os
-import sys
+import site
 from glob import glob
 
 
 def find_plugin_modules():
     plugins = []
-    for module in sys.path:
-        path = os.path.join(os.path.dirname(__file__), module)
-        for file in glob(os.path.join(path, 'usepy_plugin_*')):
+    for module_path in site.getsitepackages():
+        for file in glob(
+                # 兼容老版本模块
+                os.path.join(module_path, "usepy_plugin_*")) + glob(
+                os.path.join(module_path, "use_*")
+        ):
             path_name = os.path.basename(file)
             try:
                 plugins.append(importlib.import_module(path_name))

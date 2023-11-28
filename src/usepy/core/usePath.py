@@ -4,7 +4,6 @@ from typing import List, Union
 
 
 class usePath(object):
-
     @staticmethod
     def get_current_path() -> Path:
         """
@@ -42,7 +41,7 @@ class usePath(object):
         :return:
         """
         if not pathlib.Path(old_path).exists():
-            raise FileNotFoundError(f'{old_path} not found')
+            raise FileNotFoundError(f"{old_path} not found")
         pathlib.Path(old_path).rename(new_path)
 
     @staticmethod
@@ -54,7 +53,7 @@ class usePath(object):
         :return: 迭代器
         """
         _path = pathlib.Path(path)
-        _glob = _path.glob('*') if not sub_dir else _path.rglob('*')
+        _glob = _path.glob("*") if not sub_dir else _path.rglob("*")
         return [p for p in _glob if p.exists()]
 
     @staticmethod
@@ -68,7 +67,9 @@ class usePath(object):
         return [p for p in usePath._list_path(path, sub_dir) if p.is_dir()]
 
     @staticmethod
-    def listfile(path: str, sub_dir: bool = True, suffix_list: List[str] = None) -> List[Path]:
+    def listfile(
+        path: str, sub_dir: bool = True, suffix_list: List[str] = None
+    ) -> List[Path]:
         """
         列出目录下的所有文件
         :param path: 目录路径
@@ -77,10 +78,16 @@ class usePath(object):
         :return: 文件列表
         """
         suffix_list = suffix_list or []
-        return [p for p in usePath._list_path(path, sub_dir) if p.is_file() and p.suffix in suffix_list]
+        return [
+            p
+            for p in usePath._list_path(path, sub_dir)
+            if p.is_file() and p.suffix in suffix_list
+        ]
 
     @staticmethod
-    def list(path: str, sub_dir: bool = True, suffix_list: List[str] = None) -> List[Path]:
+    def list(
+        path: str, sub_dir: bool = True, suffix_list: List[str] = None
+    ) -> List[Path]:
         """
         列出目录下的所有文件和目录
         :param path: 目录路径

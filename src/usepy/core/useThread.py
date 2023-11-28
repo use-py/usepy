@@ -1,5 +1,5 @@
 import functools
-from concurrent.futures import ThreadPoolExecutor, wait, ALL_COMPLETED
+from concurrent.futures import ALL_COMPLETED, ThreadPoolExecutor, wait
 
 
 class useThread:
@@ -19,7 +19,8 @@ class useThread:
         return _wrapper
 
     @staticmethod
-    def pool(num): ...
+    def pool(num):
+        ...
 
 
 class _Pool:
@@ -28,9 +29,7 @@ class _Pool:
     def __call__(self, func):
         @functools.wraps(func)
         def _wrapper(*args, **kwargs):
-            self.jobs.append(
-                self.pool.submit(func, *args, **kwargs)
-            )
+            self.jobs.append(self.pool.submit(func, *args, **kwargs))
 
         return _wrapper
 

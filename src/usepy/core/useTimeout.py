@@ -1,9 +1,8 @@
 import threading
-from typing import Optional, Callable
+from typing import Callable, Optional
 
 
 class useTimeoutFn(object):
-
     def __init__(self, interval: float, cb: Callable, immediate: bool = False):
         """
         :param interval: 超时时间

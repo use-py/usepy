@@ -2,20 +2,17 @@ try:
     from typing import Literal
 except ImportError:
     from typing_extensions import Literal
-from typing import List, Generator, Dict, Optional, Callable, Any, Tuple, Union
 
 from functools import reduce
 from operator import and_, or_
+from typing import Any, Callable, Dict, Generator, List, Optional, Tuple, Union
 
-SortType = Optional[
-    Literal["quick", "bubble", "select"]
-]
+SortType = Optional[Literal["quick", "bubble", "select"]]
 
 ListType = Union[List, Tuple]
 
 
 class useList:
-
     @staticmethod
     def split(collection: ListType, n: int) -> Generator[List, None, None]:
         """
@@ -30,7 +27,7 @@ class useList:
         [(1, 2, 3, 4), (5, 6, 7, 8), (9,)]
         """
         for i in range(0, len(collection), n):
-            yield collection[i:i + n]
+            yield collection[i : i + n]
 
     @staticmethod
     def reverse(collection: ListType) -> List:
@@ -132,18 +129,18 @@ class useList:
         return collection
 
     @staticmethod
-    def sort(collection: List, algorithm: SortType = 'bubble') -> List:
+    def sort(collection: List, algorithm: SortType = "bubble") -> List:
         """
         排序
         :param collection: 待排序数组
         :param algorithm: 排序算法, 默认冒泡排序
         :return: 排序后数组
         """
-        name = f'sort_{algorithm}'
+        name = f"sort_{algorithm}"
         if hasattr(useList, name):
             return getattr(useList, name)(collection)
         else:
-            raise Exception('algorithm not found')
+            raise Exception("algorithm not found")
 
     @staticmethod
     def sort_by_list(collection: List, sort_list: List) -> List:
@@ -158,7 +155,9 @@ class useList:
         >>> useList.sort_by_list(['blue', 'green', 'orange', 'purple', 'yellow'], [3, 2, 5, 4, 1])
         ['yellow', 'green', 'blue', 'purple', 'orange']
         """
-        return [val for (_, val) in sorted(zip(sort_list, collection), key=lambda x: x[0])]
+        return [
+            val for (_, val) in sorted(zip(sort_list, collection), key=lambda x: x[0])
+        ]
 
     @staticmethod
     def flatten(nested: ListType) -> List:
@@ -208,7 +207,9 @@ class useList:
         return max(collection, key=fn)
 
     @staticmethod
-    def difference(original_list: List, exclude_list: List, fn: Optional[Callable] = None):
+    def difference(
+        original_list: List, exclude_list: List, fn: Optional[Callable] = None
+    ):
         """
         求差集
         :param original_list: 原数组
@@ -246,7 +247,9 @@ def useListFlatten(array: List):
     return useList.flatten(array)
 
 
-def useListDifference(original_array: List, exclude_array: List, fn: Optional[Callable] = None):
+def useListDifference(
+    original_array: List, exclude_array: List, fn: Optional[Callable] = None
+):
     """
     求差集
     :param original_array: 原数组
@@ -284,7 +287,7 @@ def useListSome(array: List, fn: Callable):
     return reduce(or_, [fn(element) for element in array])
 
 
-def useListSort(array: List, algorithm: SortType = 'bubble'):
+def useListSort(array: List, algorithm: SortType = "bubble"):
     """
     数组排序
     :param array: 数组

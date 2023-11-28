@@ -1,7 +1,7 @@
 import logging
 import time
 
-from usepy import useSingleton, useCatchError, useTimeIt, useRunInThread, useListify
+from usepy import useCatchError, useListify, useRunInThread, useSingleton, useTimeIt
 
 logging.basicConfig(level=logging.DEBUG)
 
@@ -18,7 +18,7 @@ class Test2:
 
 @useCatchError()
 def exception_demo():
-    raise Exception('test')
+    raise Exception("test")
 
 
 @useTimeIt
@@ -29,7 +29,7 @@ def timeit():
 @useRunInThread
 def run_in_thread():
     time.sleep(1)
-    print('run_in_thread')
+    print("run_in_thread")
 
 
 @useListify()
@@ -51,7 +51,7 @@ def listify3():
     yield 2, 4
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     listify()  # [1]
     listify2()  # {1, 2}
     listify3()  # {1: 2, 2: 3}

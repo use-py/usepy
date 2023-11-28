@@ -19,9 +19,21 @@ class useURL:
     | https      | www.google.com | {'s': ['usepy', 'usepy2'], 'ie': 'utf-8'} | /search |
 
     """
-    __slots__ = ('_url', '_parsed', 'query', 'path', 'scheme',
-                 'netloc', 'params', 'fragment', 'username', 'password',
-                 'hostname', 'port')
+
+    __slots__ = (
+        "_url",
+        "_parsed",
+        "query",
+        "path",
+        "scheme",
+        "netloc",
+        "params",
+        "fragment",
+        "username",
+        "password",
+        "hostname",
+        "port",
+    )
 
     def __init__(self, url):
         self._url = url

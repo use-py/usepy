@@ -1,5 +1,6 @@
-from usepy import useTimeoutFn, useTimeout
 import time
+
+from usepy import useTimeout, useTimeoutFn
 
 
 def test_useTimeoutFn():

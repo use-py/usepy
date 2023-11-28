@@ -33,7 +33,9 @@ def useImport(value: str):
         try:
             return module, functools.reduce(getattr, var_lst, module)
         except AttributeError:
-            raise ImportError("Module %r does not define a %r variable." % (modname, var)) from None
+            raise ImportError(
+                "Module %r does not define a %r variable." % (modname, var)
+            ) from None
     return module, None
 
 

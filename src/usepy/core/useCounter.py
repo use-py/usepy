@@ -1,17 +1,18 @@
-from typing import Optional
 import threading
+from typing import Optional
 
 
 class useCounter:
-
-    def __init__(self,
-                 init_value: int = 1,
-                 min_value: Optional[int] = None,
-                 max_value: Optional[int] = None):
+    def __init__(
+        self,
+        init_value: int = 1,
+        min_value: Optional[int] = None,
+        max_value: Optional[int] = None,
+    ):
         self.init_value = init_value
         self.count = init_value
-        self.min_value = float('-inf') if min_value is None else min_value
-        self.max_value = float('inf') if max_value is None else max_value
+        self.min_value = float("-inf") if min_value is None else min_value
+        self.max_value = float("inf") if max_value is None else max_value
         self._lock = threading.Lock()
 
     def inc(self, delta: int = 1):

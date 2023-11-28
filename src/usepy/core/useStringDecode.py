@@ -9,7 +9,7 @@ def useStringDecode(encode_str: str, key: str) -> str:
     :return: 解密后字符串
     """
     decoded_chars = []
-    original_str = base64.urlsafe_b64decode(encode_str).decode('utf-8')
+    original_str = base64.urlsafe_b64decode(encode_str).decode("utf-8")
     for i in range(len(original_str)):
         key_c = key[i % len(key)]
         decoded_c = chr((ord(original_str[i]) - ord(key_c) + 256) % 256)

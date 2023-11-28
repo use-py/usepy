@@ -20,7 +20,7 @@ class TagStripper(HTMLParser):
             self.fed.append(f"</{tag}>")
 
     def get_data(self):
-        return ''.join(self.fed)
+        return "".join(self.fed)
 
 
 def useCleanHtml(html: str, white_tags=None) -> str:

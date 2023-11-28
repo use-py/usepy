@@ -1,6 +1,6 @@
-from usepy import useParser, useCURL
+from usepy import useCURL, useParser
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     test_curl_command = """
     your curl command
     """

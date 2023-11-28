@@ -1,1 +1,1 @@
-EMPTY_VALUES = (None, '', [], (), {})
+EMPTY_VALUES = (None, "", [], (), {})

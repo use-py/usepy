@@ -1,23 +1,29 @@
 import typing as t
 from inspect import iscoroutinefunction
 
+from tenacity import retry as _retry
 from tenacity import (
-    retry as _retry,
-    stop_after_attempt, stop_never, wait_fixed,
-    retry_if_result, retry_if_exception_type
+    retry_if_exception_type,
+    retry_if_result,
+    stop_after_attempt,
+    stop_never,
+    wait_fixed,
 )
 
 undefined = object()
 
 
-def retry(max_times: t.Optional[int] = None,
-          wait_times: t.Optional[int] = None,
-          retry_on_result=undefined,
-          retry_on_exception: t.Union[
-              t.Type[BaseException],
-              t.Tuple[t.Type[BaseException], ...],
-          ] = Exception,
-          *t_args, **t_kw):
+def retry(
+    max_times: t.Optional[int] = None,
+    wait_times: t.Optional[int] = None,
+    retry_on_result=undefined,
+    retry_on_exception: t.Union[
+        t.Type[BaseException],
+        t.Tuple[t.Type[BaseException], ...],
+    ] = Exception,
+    *t_args,
+    **t_kw
+):
     """
     包装tenacity.retry，让调用更简易些
     :param max_times: 最大重试次数
@@ -38,8 +44,8 @@ def retry(max_times: t.Optional[int] = None,
     wait_on = wait_fixed(wait_times) if wait_times is not None else wait_fixed(0)
 
     def decorator(func):
-
         if iscoroutinefunction(func):
+
             @_retry(retry=retry_on, stop=stop_on, wait=wait_on, *t_args, **t_kw)
             async def wrapper(*args, **kwargs):
                 return await func(*args, **kwargs)
@@ -47,6 +53,7 @@ def retry(max_times: t.Optional[int] = None,
             return wrapper
 
         else:
+
             @_retry(retry=retry_on, stop=stop_on, wait=wait_on, *t_args, **t_kw)
             def wrapper(*args, **kwargs):
                 return func(*args, **kwargs)
@@ -56,12 +63,17 @@ def retry(max_times: t.Optional[int] = None,
     return decorator
 
 
-if __name__ == '__main__':
-    @retry(max_times=3, wait_times=1, retry_on_result=None, retry_error_callback=lambda x: print("123"))
+if __name__ == "__main__":
+
+    @retry(
+        max_times=3,
+        wait_times=1,
+        retry_on_result=None,
+        retry_error_callback=lambda x: print("123"),
+    )
     async def maybe_none():
         print("111111")
         return None
-
 
     import asyncio
 

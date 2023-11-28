@@ -1,6 +1,6 @@
+import asyncio
 import functools
 import time
-import asyncio
 
 
 class MaxRetryError(Exception):
@@ -27,7 +27,6 @@ class useRetry(object):
         self.retry_exceptions = retry_exceptions or (Exception,)
 
     def __call__(self, func):
-
         @functools.wraps(func)
         def wrapper(*args, **kwargs):
             retry = 0
@@ -37,12 +36,13 @@ class useRetry(object):
                 except self.retry_exceptions as e:
                     retry += 1
                     if retry >= self.max_retry:
-                        raise MaxRetryError(f"Max retry {self.max_retry} times，Error reason: {e}")
+                        raise MaxRetryError(
+                            f"Max retry {self.max_retry} times，Error reason: {e}"
+                        )
                     time.sleep(self.retry_interval)
 
         @functools.wraps(func)
         async def async_wrapper(*args, **kwargs):
-
             retry = 0
             while retry < self.max_retry:
                 try:
@@ -50,7 +50,9 @@ class useRetry(object):
                 except self.retry_exceptions as e:
                     retry += 1
                     if retry >= self.max_retry:
-                        raise MaxRetryError(f"Max retry {self.max_retry} times，Error reason: {e}")
+                        raise MaxRetryError(
+                            f"Max retry {self.max_retry} times，Error reason: {e}"
+                        )
                     await asyncio.sleep(self.retry_interval)
 
         wrapper_func = async_wrapper if asyncio.iscoroutinefunction(func) else wrapper

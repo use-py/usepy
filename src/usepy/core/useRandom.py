@@ -1,4 +1,4 @@
-from random import randint, choice
+from random import choice, randint
 
 
 def useRandomString(min_len=3, max_len=20, characters=None):
@@ -14,9 +14,10 @@ def useRandomString(min_len=3, max_len=20, characters=None):
     _characters = string.ascii_letters + string.digits
     characters = characters or _characters
     _len = randint(min_len, max_len) if max_len > min_len else min_len
-    return ''.join((choice(characters) for _ in range(_len)))
+    return "".join((choice(characters) for _ in range(_len)))
 
 
 def useRandomUUID():
     from uuid import uuid4
+
     return f"{uuid4().hex}"

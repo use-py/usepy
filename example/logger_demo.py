@@ -3,8 +3,8 @@ from loguru import logger
 
 from usepy.integrations.useLogger import (
     useLogger,
+    useLoggerHandlers,
     useLoggerInterceptUvicorn,
-    useLoggerHandlers
 )
 
 useLoggerInterceptUvicorn()  # 在 app 实例化前调用即可
@@ -17,7 +17,7 @@ def home():
     return {"message": "hello"}
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     # 一键调用，默认为 default_handler
     # useLogger()
     # useLogger(extra={"project_name": "project_name"})
@@ -26,10 +26,10 @@ if __name__ == '__main__':
     useLogger(
         handlers=[
             useLoggerHandlers.default_handler(),
-            useLoggerHandlers.logstash_handler(extra={"app_name": "app_name"})
+            useLoggerHandlers.logstash_handler(extra={"app_name": "app_name"}),
         ],
         packages=["kit", "mylib.sublib"],
-        extra={"project_name": "project_name"}
+        extra={"project_name": "project_name"},
     )
 
     # 分开调用，拦截并显示全部日志

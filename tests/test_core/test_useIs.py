@@ -1,4 +1,4 @@
-from usepy import useIsToken, useIsString, useIsRegexp
+from usepy import useIsRegexp, useIsString, useIsToken
 
 
 def test_is_token():
@@ -9,6 +9,7 @@ def test_is_token():
 
 def test_is_regexp():
     import re
+
     assert not useIsRegexp("regex")
     assert not useIsRegexp(".*?")
     assert useIsRegexp(re.compile(".*?"))

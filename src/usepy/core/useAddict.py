@@ -16,13 +16,12 @@ import copy
 
 
 class Dict(dict):
-
     def __init__(__self, *args, **kwargs):
         super().__init__()
-        object.__setattr__(__self, '__parent', kwargs.pop('__parent', None))
-        object.__setattr__(__self, '__auto_convert', kwargs.pop('auto_convert', False))
-        object.__setattr__(__self, '__key', kwargs.pop('__key', None))
-        object.__setattr__(__self, '__frozen', False)
+        object.__setattr__(__self, "__parent", kwargs.pop("__parent", None))
+        object.__setattr__(__self, "__auto_convert", kwargs.pop("auto_convert", False))
+        object.__setattr__(__self, "__key", kwargs.pop("__key", None))
+        object.__setattr__(__self, "__frozen", False)
         for arg in args:
             if not arg:
                 continue
@@ -40,31 +39,38 @@ class Dict(dict):
 
     def __setattr__(self, name, value):
         if hasattr(self.__class__, name):
-            raise AttributeError("'Dict' object attribute "
-                                 "'{0}' is read-only".format(name))
+            raise AttributeError(
+                "'Dict' object attribute " "'{0}' is read-only".format(name)
+            )
         else:
             self[name] = value
 
     def __setitem__(self, name, value):
-        is_frozen = (hasattr(self, '__frozen') and
-                     object.__getattribute__(self, '__frozen'))
+        is_frozen = hasattr(self, "__frozen") and object.__getattribute__(
+            self, "__frozen"
+        )
         if is_frozen and name not in super(Dict, self).keys():
             raise KeyError(name)
-        is_auto_convert = (hasattr(self, '__auto_convert') and
-                           object.__getattribute__(self, '__auto_convert'))
-        if is_auto_convert and isinstance(value, dict) and not isinstance(value, useAdDict):
+        is_auto_convert = hasattr(self, "__auto_convert") and object.__getattribute__(
+            self, "__auto_convert"
+        )
+        if (
+            is_auto_convert
+            and isinstance(value, dict)
+            and not isinstance(value, useAdDict)
+        ):
             value = self._hook(value)
         super(Dict, self).__setitem__(name, value)
         try:
-            p = object.__getattribute__(self, '__parent')
-            key = object.__getattribute__(self, '__key')
+            p = object.__getattribute__(self, "__parent")
+            key = object.__getattribute__(self, "__key")
         except AttributeError:
             p = None
             key = None
         if p is not None:
             p[key] = self
-            object.__delattr__(self, '__parent')
-            object.__delattr__(self, '__key')
+            object.__delattr__(self, "__parent")
+            object.__delattr__(self, "__key")
 
     def __add__(self, other):
         if not self.keys():
@@ -87,7 +93,7 @@ class Dict(dict):
         return self.__getitem__(item)
 
     def __missing__(self, name):
-        if object.__getattribute__(self, '__frozen'):
+        if object.__getattribute__(self, "__frozen"):
             raise KeyError(name)
         return self.__class__(__parent=self, __key=name)
 
@@ -101,8 +107,9 @@ class Dict(dict):
                 base[key] = value.to_dict()
             elif isinstance(value, (list, tuple)):
                 base[key] = type(value)(
-                    item.to_dict() if isinstance(item, type(self)) else
-                    item for item in value)
+                    item.to_dict() if isinstance(item, type(self)) else item
+                    for item in value
+                )
             else:
                 base[key] = value
         return base
@@ -128,9 +135,11 @@ class Dict(dict):
             other.update(args[0])
         other.update(kwargs)
         for k, v in other.items():
-            if ((k not in self) or
-                    (not isinstance(self[k], dict)) or
-                    (not isinstance(v, dict))):
+            if (
+                (k not in self)
+                or (not isinstance(self[k], dict))
+                or (not isinstance(v, dict))
+            ):
                 self[k] = v
             else:
                 self[k].update(v)
@@ -170,7 +179,7 @@ class Dict(dict):
             return default
 
     def freeze(self, shouldFreeze=True):
-        object.__setattr__(self, '__frozen', shouldFreeze)
+        object.__setattr__(self, "__frozen", shouldFreeze)
         for key, val in self.items():
             if isinstance(val, Dict):
                 val.freeze(shouldFreeze)

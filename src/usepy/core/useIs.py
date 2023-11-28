@@ -12,7 +12,7 @@ def useIsToken(value) -> bool:
     :param value: 要检查的值
     :return:
     """
-    return bool(re.match('^[A-Za-z0-9]{3,32}$', value))
+    return bool(re.match("^[A-Za-z0-9]{3,32}$", value))
 
 
 def useIsString(value) -> bool:

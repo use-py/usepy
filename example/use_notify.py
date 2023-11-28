@@ -1,4 +1,4 @@
-from usepy.integrations.useNotify import useNotify, useChannels
+from usepy.integrations.useNotify import useChannels, useNotify
 
 notify = useNotify()
 notify.add(
