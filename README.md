@@ -55,21 +55,6 @@ assert bf.exists('miclon') is True
 assert bf.exists('python') is False
 ```
 
-### 还有一些集成工具
-
-- useNotify(消息通知)
-
-```python
-from usepy.integrations.useNotify import useNotify, useChannels
-
-notify = useNotify()
-notify.add(
-    useChannels.Bark({"token": "jtgTe6****yj6DaepQ"}),
-)
-
-notify.publish(content="usepy")
-```
-
 更多参阅[官方文档](https://usepy.code05.com/)
 
 ## 贡献
