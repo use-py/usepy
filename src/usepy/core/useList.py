@@ -305,3 +305,21 @@ def useListUnique(array: List, fn: Optional[Callable] = None):
     :return: 去重后数组
     """
     return list(useList.dedupe(array, fn))
+
+
+def useListMergeByKey(collection1: List, collection2: List, key: str):
+    """
+    数组中对象按key合并
+    """
+    if not collection1 or not collection2:
+        return collection1 or collection2
+    if key not in collection1[0] or key not in collection2[0]:
+        return collection1 + collection2
+    array1_dict = useList.objs_to_obj(collection1, key)
+    array2_dict = useList.objs_to_obj(collection2, key)
+    for _key in array2_dict:
+        if _key in array1_dict:
+            array1_dict[_key].update(array2_dict[_key])
+        else:
+            array1_dict[_key] = array2_dict[_key]
+    return list(array1_dict.values())
