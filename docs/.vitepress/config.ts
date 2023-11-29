@@ -76,21 +76,29 @@ export default withPwa(defineConfig({
     nav: [
       { text: '指南', link: '/guide/' },
       { text: 'API', link: '/api/' },
-      { text: '插件', link: '/plugin/' },
+      { text: '扩展', link: '/extension/' },
     ],
 
     sidebar: {
-      '/plugin': [
+      '/extension': [
         {
           text: '扩展',
           items: [
             {
+              text: 'use-rabbitmq',
+              link: '/extension/rabbitmq',
+            },
+            {
+              text: 'use-redis',
+              link: '/extension/redis',
+            },
+            {
               text: 'use-logger',
-              link: '/plugin/logger',
+              link: '/extension/logger',
             },
             {
               text: 'use-notify',
-              link: '/plugin/notify',
+              link: '/extension/notify',
             }
           ],
         }
