@@ -1,0 +1,19 @@
+import{_ as s,o as n,c as a,R as o}from"./chunks/framework.4314545f.js";const _=JSON.parse('{"title":"","description":"","frontmatter":{"outline":"deep"},"headers":[],"relativePath":"decorator/catch_error.md","filePath":"decorator/catch_error.md","lastUpdated":1690341921000}'),p={name:"decorator/catch_error.md"},l=o(`<div class="info custom-block"><p class="custom-block-title">INFO</p><pre><code>@Author: MicLon
+@Date: 2023/02/27
+@Description: 捕获函数执行中的异常
+</code></pre></div><h2 id="使用" tabindex="-1">使用 <a class="header-anchor" href="#使用" aria-label="Permalink to &quot;使用&quot;">​</a></h2><p><code>@useCatchError</code>装饰器，用于捕获函数执行中的异常</p><div class="language-python"><button title="Copy Code" class="copy"></button><span class="lang">python</span><pre class="shiki vitesse-dark"><code><span class="line"><span style="color:#4D9375;">from</span><span style="color:#DBD7CAEE;"> usepy </span><span style="color:#4D9375;">import</span><span style="color:#DBD7CAEE;"> useCatchError</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span style="color:#666666;">@</span><span style="color:#80A665;">useCatchError</span><span style="color:#666666;">()</span></span>
+<span class="line"><span style="color:#CB7676;">def</span><span style="color:#DBD7CAEE;"> </span><span style="color:#80A665;">exception_demo</span><span style="color:#666666;">():</span></span>
+<span class="line"><span style="color:#DBD7CAEE;">    </span><span style="color:#4D9375;">raise</span><span style="color:#DBD7CAEE;"> </span><span style="color:#B8A965;">Exception</span><span style="color:#666666;">(</span><span style="color:#C98A7D99;">&#39;</span><span style="color:#C98A7D;">test</span><span style="color:#C98A7D99;">&#39;</span><span style="color:#666666;">)</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span style="color:#666666;">@</span><span style="color:#80A665;">useCatchError</span><span style="color:#666666;">(</span><span style="color:#BD976A;">return_val</span><span style="color:#CB7676;">=</span><span style="color:#C98A7D99;">&#39;</span><span style="color:#C98A7D;">test</span><span style="color:#C98A7D99;">&#39;</span><span style="color:#666666;">)</span></span>
+<span class="line"><span style="color:#CB7676;">def</span><span style="color:#DBD7CAEE;"> </span><span style="color:#80A665;">exception_demo2</span><span style="color:#666666;">():</span></span>
+<span class="line"><span style="color:#DBD7CAEE;">    </span><span style="color:#4D9375;">raise</span><span style="color:#DBD7CAEE;"> </span><span style="color:#B8A965;">Exception</span><span style="color:#666666;">(</span><span style="color:#C98A7D99;">&#39;</span><span style="color:#C98A7D;">test</span><span style="color:#C98A7D99;">&#39;</span><span style="color:#666666;">)</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B8A965;">print</span><span style="color:#666666;">(</span><span style="color:#DBD7CAEE;">exception_demo</span><span style="color:#666666;">())</span><span style="color:#DBD7CAEE;">  </span><span style="color:#758575DD;"># None</span></span>
+<span class="line"><span style="color:#B8A965;">print</span><span style="color:#666666;">(</span><span style="color:#DBD7CAEE;">exception_demo2</span><span style="color:#666666;">())</span><span style="color:#DBD7CAEE;">  </span><span style="color:#758575DD;"># &#39;test&#39;</span></span>
+<span class="line"><span style="color:#B8A965;">print</span><span style="color:#666666;">(</span><span style="color:#C98A7D99;">&quot;</span><span style="color:#C98A7D;">run to here</span><span style="color:#C98A7D99;">&quot;</span><span style="color:#666666;">)</span></span></code></pre></div>`,4),e=[l];function t(c,r,y,i,D,d){return n(),a("div",null,e)}const C=s(p,[["render",t]]);export{_ as __pageData,C as default};
