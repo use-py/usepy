@@ -1,17 +1,17 @@
 ---
-title: usepy-plugin-notify
+title: use-notify
 outline: deep
 ---
 
-# usepy-plugin-logger
+# use-notify
 
 ::: code-group
 
 ```bash [pip]
-pip install "usepy[notify]"
+pip install use-notify
 ```
 ```bash [poetry]
-poetry add "usepy[notify]"
+poetry add use-notify
 ```
 :::
 
@@ -30,7 +30,7 @@ poetry add "usepy[notify]"
 #### 使用
 
 ```python
-from usepy import useNotify, useNotifyChannels
+from use_notify import useNotify, useNotifyChannels
 
 notify = useNotify()
 notify.add(
@@ -50,7 +50,7 @@ notify.publish(title="消息标题", content="消息正文")
 #### 自己开发消息通知
 
 ```python
-from usepy.useNotifyChannels import BaseChannel
+from use_notify.useNotifyChannels import BaseChannel
 
 
 class Custom(BaseChannel):

@@ -82,14 +82,14 @@ export default withPwa(defineConfig({
     sidebar: {
       '/plugin': [
         {
-          text: '扩展插件',
+          text: '扩展',
           items: [
             {
-              text: 'usepy-plugin-logger',
+              text: 'use-logger',
               link: '/plugin/logger',
             },
             {
-              text: 'usepy-plugin-notify',
+              text: 'use-notify',
               link: '/plugin/notify',
             }
           ],

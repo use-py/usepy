@@ -1,16 +1,16 @@
 ---
-title: usepy-plugin-logger
+title: use-logger
 outline: deep
 ---
-# usepy-plugin-logger
+# use-logger
 
 ::: code-group
 
 ```bash [pip]
-pip install "usepy[logger]"
+pip install use-logger
 ```
 ```bash [poetry]
-poetry add "usepy[logger]"
+poetry add use-logger
 ```
 :::
 
@@ -25,7 +25,7 @@ poetry add "usepy[logger]"
 ## 使用
 
 ```python
-from usepy import useLogger
+from use_logger import useLogger
 
 useLogger() # 使用默认配置
 ```
@@ -35,7 +35,7 @@ useLogger() # 使用默认配置
 如果想要感受它带来的“魔法”，需要稍微配置一下。
 
 ```python
-from usepy import useLogger
+from use_logger import useLogger
 
 useLogger(packages=["scrapy", "django", "usepy"])
 ```
@@ -50,7 +50,9 @@ useLogger(packages=["scrapy", "django", "usepy"])
 `useLogger`内置一个`logstash_handler`统一化输出格式。
 
 ```python{6}
-from usepy import useTimeIt, useLogger, logstash_handler
+from usepy import useTimeIt
+from use_logger import useLogger
+from use_logger.handlers import logstash_handler
 
 useLogger(
     handlers=[
@@ -83,7 +85,7 @@ useTimeIt(lambda: logger.debug("start run test function"))()
 ```python
 # app.py
 from fastapi import FastAPI
-from usepy import useLoggerInterceptUvicorn
+from use_logger import useLoggerInterceptUvicorn
 
 useLoggerInterceptUvicorn()  # 在 app 实例化前调用即可
 
@@ -111,7 +113,7 @@ uvicorn.run(app="app:app", host="127.0.0.1")
 
 ```python
 from loguru import logger
-from usepy import useLogger
+from use_logger import useLogger
 
 useLogger()
 
