@@ -1,5 +1,3 @@
-import calendar
-
 from usepy import useDateTime
 
 if __name__ == "__main__":

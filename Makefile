@@ -2,17 +2,12 @@ install: ## Run `poetry install`
 	poetry install --no-root
 
 lint:
-	poetry run isort --check .
-	poetry run black --check .
-	poetry run flake8 src tests
+	poetry run ruff .
+	poetry run ruff check .
 
 format: ## Formasts you code with Black
-	poetry run isort .
-	poetry run black .
-
-run: ## run `poetry run {{ cookiecutter.package_name }}`
-	poetry run {{ cookiecutter.package_name }}
-
+	poetry run ruff . --fix
+	poetry run ruff check . --fix
 
 test:
 	poetry run pytest -v tests

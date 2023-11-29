@@ -1,4 +1,4 @@
-from usepy import useCURL, useParser
+from usepy import useCURL
 
 if __name__ == "__main__":
     test_curl_command = """

@@ -23,8 +23,14 @@ pytest = "*"
 black = "*"
 flake8 = "*"
 isort = "*"
+ruff = "*"
 pre-commit = "*"
 pre-commit-hooks = "*"
+
+[tool.ruff]
+ignore = [
+    "E501", # line too long, handled by black
+]
 
 [build-system]
 requires = ["poetry-core"]
