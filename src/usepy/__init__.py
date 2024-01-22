@@ -9,6 +9,7 @@ __all__ = [
     "useAdDict",
     "useBloomFilter",
     "useCachedProperty",
+    "useSynchronized",
     "useCatchError",
     "useCleanHtml",
     "useCounter",
