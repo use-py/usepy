@@ -1,10 +1,10 @@
 import random
 from typing import TypeVar, Sequence
 
-T = TypeVar('T')
+T = TypeVar("T")
 
 
-def sample(arr: Sequence[T]) -> T:
+def sample(arr: Sequence[T], count: int = 1) -> T | list[T]:
     """
     Returns a random element from a sequence.
 
@@ -22,5 +22,9 @@ def sample(arr: Sequence[T]) -> T:
         3
         >>> sample(('apple', 'banana', 'cherry'))
         'banana'
+        >>> sample([1, 2, 3, 4, 5], 2)
+        [3, 1]
     """
-    return random.choice(arr)
+    if count == 1:
+        return random.choice(arr)
+    return random.sample(arr, count)

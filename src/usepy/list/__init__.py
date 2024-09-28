@@ -14,6 +14,8 @@ from .union import union
 from .key_by import key_by
 from .zip_ import zip_
 from .zip_dict import zip_dict
+from .first import first
+from .last import last
 
 
 __all__ = [
@@ -33,4 +35,6 @@ __all__ = [
     "key_by",
     "zip_",
     "zip_dict",
+    "first",
+    "last",
 ]
