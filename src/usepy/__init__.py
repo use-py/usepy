@@ -61,6 +61,7 @@ __all__ = [
     "parse",
     "format",
     "now",
+    "timestamp",
     # misc
     "dynamic_import",
     "get_function_name",

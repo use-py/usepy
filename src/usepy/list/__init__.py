@@ -12,7 +12,7 @@ from .without import without
 from .uniq import uniq
 from .union import union
 from .key_by import key_by
-from .zip_ import zip_
+from .zip_tuple import zip_tuple
 from .zip_dict import zip_dict
 from .first import first
 from .last import last
@@ -33,7 +33,7 @@ __all__ = [
     "uniq",
     "union",
     "key_by",
-    "zip_",
+    "zip_tuple",
     "zip_dict",
     "first",
     "last",

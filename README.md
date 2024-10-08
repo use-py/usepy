@@ -23,37 +23,7 @@
 pip install usepy -U
 ```
 
-### 示例及文档
-
-[官方文档](https://usepy.code05.com/)
-
-### 演示
-
-- useAdDict
-
-```python
-from usepy import useAdDict
-
-d = useAdDict(
-    {'a': 1, 'b': 2, 'c': {'d': 3, 'e': 4}}
-)
-assert d.a == 1
-assert d.c.e == 4
-```
-
-- useBloomFilter
-
-```python
-from redis import Redis
-from usepy import useBloomFilter
-
-rds = Redis(host='localhost', port=6379, db=0)
-bf = useBloomFilter(client=rds)
-bf.add('hi', 'miclon')
-assert bf.exists('hi') is True
-assert bf.exists('miclon') is True
-assert bf.exists('python') is False
-```
+<img src="./resources/overview.png"/>
 
 更多参阅[官方文档](https://usepy.code05.com/)
 

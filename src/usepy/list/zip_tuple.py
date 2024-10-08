@@ -1,7 +1,7 @@
 from typing import Tuple, List, Any
 
 
-def zip_(*lsts: List[Any]) -> List[Tuple[Any, ...]]:
+def zip_tuple(*lsts: List[Any]) -> List[Tuple[Any, ...]]:
     """
     Combines multiple arrays into a single array of tuples.
 
@@ -19,11 +19,11 @@ def zip_(*lsts: List[Any]) -> List[Tuple[Any, ...]]:
     Examples:
         >>> arr1 = [1, 2, 3]
         >>> arr2 = ['a', 'b', 'c']
-        >>> zip_(arr1, arr2)
+        >>> zip_tuple(arr1, arr2)
         [(1, 'a'), (2, 'b'), (3, 'c')]
 
         >>> arr3 = [True, False]
-        >>> zip_(arr1, arr2, arr3)
+        >>> zip_tuple(arr1, arr2, arr3)
         [(1, 'a', True), (2, 'b', False), (3, 'c', None)]
     """
     result: List[Tuple[Any, ...]] = []

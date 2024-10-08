@@ -3,7 +3,7 @@ import json
 import pickle
 import unittest
 
-from usepy import useAdDict as Dict
+from usepy import AdDict as Dict
 
 
 # test whether unittests pass on child classes

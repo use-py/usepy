@@ -1,21 +1,30 @@
-import re
-
-
 def is_url(url: str) -> bool:
     """
-    Check if the given string is a valid URL.
+    check if the given string is a valid URL.
 
     Args:
-        url (str): The string to check.
+        url (str): the string to check.
 
     Returns:
-        bool: True if the string is a valid URL, False otherwise.
+        bool: if the string is a valid URL, return True, otherwise return False.
 
     Examples:
         >>> is_url("https://www.google.com")
         True
     """
-    pattern = re.compile(
-        r"^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$"
-    )
-    return bool(pattern.match(url))
+    if not url or not isinstance(url, str):
+        return False
+
+    from urllib.parse import urlparse
+
+    try:
+        result = urlparse(url)
+        if all([result.scheme, result.netloc]) and result.scheme in [
+            "http",
+            "https",
+        ]:
+            return True
+    except ValueError:
+        return False
+
+    return False
