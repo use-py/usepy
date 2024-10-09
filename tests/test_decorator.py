@@ -1,4 +1,3 @@
-import pytest
 from usepy.decorator import retry, catch_error, singleton, throttle
 import time
 

@@ -1,6 +1,6 @@
 import pytest
 from usepy.date import parse, format, now
-from datetime import datetime, timezone
+from datetime import datetime
 
 
 @pytest.mark.parametrize(

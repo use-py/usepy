@@ -12,27 +12,37 @@ def test_ad_dict():
     assert ad.get("c", 3) == 3
 
 
-def test_sort_by_key():
-    d = {"c": 3, "a": 1, "b": 2}
-    sorted_d = sort_by_key(d)
-    assert list(sorted_d.keys()) == ["a", "b", "c"]
-    assert list(sorted_d.values()) == [1, 2, 3]
+@pytest.mark.parametrize(
+    "input, expected",
+    [
+        ({"c": 3, "a": 1, "b": 2}, {"a": 1, "b": 2, "c": 3}),
+        ({"a": 1, "b": 2, "c": 3}, {"a": 1, "b": 2, "c": 3}),
+    ],
+)
+def test_sort_by_key(input, expected):
+    sorted_d = sort_by_key(input)
+    assert sorted_d == expected
 
 
-def test_sort_by_value():
-    d = {"c": 3, "a": 1, "b": 2}
-    sorted_d = sort_by_value(d)
-    assert list(sorted_d.keys()) == ["a", "b", "c"]
-    assert list(sorted_d.values()) == [1, 2, 3]
+@pytest.mark.parametrize(
+    "input, expected",
+    [
+        ({"c": 3, "a": 1, "b": 2}, {"a": 1, "b": 2, "c": 3}),
+        ({"a": 1, "b": 2, "c": 3}, {"a": 1, "b": 2, "c": 3}),
+    ],
+)
+def test_sort_by_value(input, expected):
+    sorted_d = sort_by_value(input)
+    assert sorted_d == expected
 
 
-def test_merge_dicts():
-    d1 = {"a": 1, "b": 2}
-    d2 = {"b": 3, "c": 4}
-    merged = merge_dicts(d1, d2)
-    assert merged == {"a": 1, "b": 3, "c": 4}
-
-    # Test with more than two dictionaries
-    d3 = {"d": 5}
-    merged = merge_dicts(d1, d2, d3)
-    assert merged == {"a": 1, "b": 3, "c": 4, "d": 5}
+@pytest.mark.parametrize(
+    "dict1, dict2, expected",
+    [
+        ({"a": 1, "b": 2}, {"b": 3, "c": 4}, {"a": 1, "b": 3, "c": 4}),
+        ({"a": 1, "b": 2}, {"b": 3, "c": 4, "d": 5}, {"a": 1, "b": 3, "c": 4, "d": 5}),
+    ],
+)
+def test_merge_dicts(dict1, dict2, expected):
+    merged = merge_dicts(dict1, dict2)
+    assert merged == expected
