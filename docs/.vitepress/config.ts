@@ -69,31 +69,30 @@ export default withPwa(defineConfig({
     ],
 
     footer: {
-      message: 'Released under the MIT License. Based on Vitest.',
+      message: 'Released under the MIT License.',
       copyright: 'Copyright © 2023 MicLon',
     },
 
     nav: [
       { text: '指南', link: '/guide/' },
       { text: 'API', link: '/api/' },
-      { text: '插件', link: '/plugin/' },
+      { text: '生态', link: '/ecology/' },
     ],
-
     sidebar: {
-      '/plugin': [
-        {
-          text: '扩展插件',
-          items: [
-            {
-              text: 'usepy-plugin-logger',
-              link: '/plugin/logger',
-            },
-            {
-              text: 'usepy-plugin-notify',
-              link: '/plugin/notify',
-            }
-          ],
-        }
+      '/ecology': [
+        // {
+        //   text: '生态',
+        //   items: [
+        //     {
+        //       text: 'usepy-logger',
+        //       link: '/plugin/logger',
+        //     },
+        //     {
+        //       text: 'usepy-plugin-notify',
+        //       link: '/plugin/notify',
+        //     }
+        //   ],
+        // }
       ],
       '/': [
         {
@@ -106,39 +105,159 @@ export default withPwa(defineConfig({
           ],
         },
         {
-          text: 'Core',
+          text: 'List',
           items: [
             {
-              text: 'useAdDict',
-              link: '/api/addict',
+              text: 'chunk',
+              link: '/api/list/chunk',
             },
             {
-              text: 'useDict',
-              link: '/api/dict',
+              text: 'compact',
+              link: '/api/list/compact',
             },
             {
-              text: 'useList',
-              link: '/api/list',
+              text: 'count_by',
+              link: '/api/list/count_by',
             },
             {
-              text: 'useBloomFilter',
-              link: '/api/bloom_filter',
+              text: 'difference',
+              link: '/api/list/difference',
             },
             {
-              text: 'useString',
-              link: '/api/string',
+              text: 'every',
+              link: '/api/list/every',
             },
             {
-              text: 'useDateTime',
-              link: '/api/datetime',
+              text: 'flatten',
+              link: '/api/list/flatten',
             },
             {
-              text: 'usePath',
-              link: '/api/path',
+              text: 'flatten_deep',
+              link: '/api/list/flatten_deep',
             },
             {
-              text: 'useParser',
-              link: '/api/parser',
+              text: 'key_by',
+              link: '/api/list/key_by',
+            },
+            {
+              text: 'sample',
+              link: '/api/list/sample',
+            },
+            {
+              text: 'shuffle',
+              link: '/api/list/shuffle',
+            },
+            {
+              text: 'some',
+              link: '/api/list/some',
+            },
+            {
+              text: 'union',
+              link: '/api/list/union',
+            },
+            {
+              text: 'uniq',
+              link: '/api/list/uniq',
+            },
+            {
+              text: 'without',
+              link: '/api/list/without',
+            },
+            {
+              text: 'zip_dict',
+              link: '/api/list/zip_dict',
+            },
+            {
+              text: 'zip_tuple',
+              link: '/api/list/zip_tuple',
+            },
+          ],
+        },
+        {
+          text: 'Dict',
+          items: [
+            {
+              text: 'ad_dict',
+              link: '/api/dict/ad_dict',
+            },
+            {
+              text: 'merge_dicts',
+              link: '/api/dict/merge_dicts',
+            },
+            {
+              text: 'sort_by_key',
+              link: '/api/dict/sort_by_key',
+            },
+            {
+              text: 'sort_by_value',
+              link: '/api/dict/sort_by_value',
+            },
+          ],
+        },
+        {
+          text: 'String',
+          items: [
+            {
+              text: 'capitalize',
+              link: '/api/string/capitalize',
+            },
+            {
+              text: 'camel_case',
+              link: '/api/string/camel_case',
+            },
+            {
+              text: 'kebab_case',
+              link: '/api/string/kebab_case',
+            },
+            {
+              text: 'snake_case',
+              link: '/api/string/snake_case',
+            },
+            {
+              text: 'pascal_case',
+              link: '/api/string/pascal_case',
+            },
+            {
+              text: 'lower_case',
+              link: '/api/string/lower_case',
+            },
+            {
+              text: 'left',
+              link: '/api/string/left',
+            },
+            {
+              text: 'right',
+              link: '/api/string/right',
+            },
+            {
+              text: 'middle',
+              link: '/api/string/middle',
+            },
+            {
+              text: 'middle_batch',
+              link: '/api/string/middle_batch',
+            },
+          ],
+        },
+
+        {
+          text: 'Date',
+          items: [
+            {
+              text: 'parse',
+              link: '/api/date/parse',
+            },
+            {
+              text: 'format',
+              link: '/api/date/format',
+            },
+            {
+              text: 'now',
+              link: '/api/date/now',
+            },
+            {
+              text: 'timestamp',
+              link: '/api/date/timestamp',
             },
           ],
         },
@@ -146,62 +265,72 @@ export default withPwa(defineConfig({
           text: 'Decorator',
           items: [
             {
-              text: 'useThread',
-              link: '/decorator/thread',
+              text: 'catch_error',
+              link: '/api/decorator/catch_error',
             },
             {
-              text: 'useSingleton',
-              link: '/decorator/singleton',
+              text: 'retry',
+              link: '/api/decorator/retry',
             },
             {
-              text: 'useTimeIt',
-              link: '/decorator/timeit',
+              text: 'singleton',
+              link: '/api/decorator/singleton',
             },
             {
-              text: 'useCatchError',
-              link: '/decorator/catch_error',
-            },
-            {
-              text: 'useExceptDebug',
-              link: '/decorator/except_debug',
-            },
-            {
-              text: 'useRunInThread',
-              link: '/decorator/run_in_thread',
-            },
-            {
-              text: 'useListify',
-              link: '/decorator/listify',
+              text: 'throttle',
+              link: '/api/decorator/throttle',
             },
           ],
         },
         {
-          text: 'Utils',
+          text: 'Converter',
           items: [
             {
-              text: 'useTimer',
-              link: '/utils/timer',
+              text: 'to_bool',
+              link: '/api/converter/to_bool',
             },
             {
-              text: 'useTimeout',
-              link: '/utils/timeout',
+              text: 'to_list',
+              link: '/api/converter/to_list',
             },
             {
-              text: 'useBloomFilter',
-              link: '/utils/bloom_filter',
+              text: 'to_md5',
+              link: '/api/converter/to_md5',
             },
             {
-              text: 'useIs',
-              link: '/utils/is',
+              text: 'to_set',
+              link: '/api/converter/to_set',
             },
             {
-              text: 'useTo',
-              link: '/utils/to',
+              text: 'to_string',
+              link: '/api/converter/to_string',
+            },
+          ],
+        },
+        {
+          text: 'Validator',
+          items: [
+            {
+              text: 'is_async_function',
+              link: '/api/validator/is_async_function',
             },
             {
-              text: 'utils',
-              link: '/utils/utils',
-            }
+              text: 'is_url',
+              link: '/api/validator/is_url',
+            },
+          ],
+        },
+        {
+          text: 'Misc',
+          items: [
+            {
+              text: 'dynamic_import',
+              link: '/api/misc/dynamic_import',
+            },
+            {
+              text: 'get_function_name',
+              link: '/api/misc/get_function_name',
+            },
           ],
         },
       ] as SidebarItem[],

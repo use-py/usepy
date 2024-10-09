@@ -1,7 +1,7 @@
 from typing import TypeVar, List, Union, Optional
 
-T = TypeVar('T')
-D = TypeVar('D', int, float)
+T = TypeVar("T")
+D = TypeVar("D", int, float)
 
 
 def flatten(lst: List[T], depth: D = 1) -> List[Union[T, List[T]]]:
@@ -11,7 +11,7 @@ def flatten(lst: List[T], depth: D = 1) -> List[Union[T, List[T]]]:
     Args:
         lst (List[T]): The array to flatten.
         depth (Optional[D], optional): The depth level specifying how deep a nested array structure should be flattened.
-            If `None`, the array will be flattened completely. Defaults to 1.
+            If `float('inf')`, the array will be flattened completely. Defaults to 1.
 
     Returns:
         List[Union[T, List[T]]]: A new array that has been flattened.

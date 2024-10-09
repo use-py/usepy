@@ -32,7 +32,7 @@ features:
   - title: 0依赖
     details: 你use的方法，都是基于标准库。
   - title: 简单方便
-    details: from usepy import use*
+    details: from usepy import *
   - title: 超多方法
-    details: 你想要的方法，都在这里。
+    details: 50+实用方法
 ---
