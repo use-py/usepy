@@ -1,5 +1,3 @@
-import pytest
-import asyncio
 from usepy.validator import is_async_function, is_url
 
 

@@ -1,7 +1,7 @@
-from .ad_dict import *
-from .sort_by_key import *
-from .sort_by_value import *
-from .merge_dicts import *
+from .ad_dict import AdDict
+from .sort_by_key import sort_by_key
+from .sort_by_value import sort_by_value
+from .merge_dicts import merge_dicts
 
 __all__ = [
     "AdDict",
