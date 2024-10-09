@@ -69,7 +69,7 @@ export default withPwa(defineConfig({
     ],
 
     footer: {
-      message: 'Released under the MIT License. Based on Vitest.',
+      message: 'Released under the MIT License.',
       copyright: 'Copyright © 2023 MicLon',
     },
 
@@ -171,7 +171,6 @@ export default withPwa(defineConfig({
               text: 'zip_tuple',
               link: '/api/list/zip_tuple',
             },
-
           ],
         },
         {

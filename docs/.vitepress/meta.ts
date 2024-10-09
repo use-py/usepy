@@ -3,7 +3,7 @@
 /* Texts */
 export const vitestName = 'UsePy'
 export const vitestShortName = 'UsePy'
-export const vitestDescription = 'A blazing fast unit test framework powered by Vite'
+export const vitestDescription = '简单又便捷的Python工具包'
 
 /* CDN fonts and styles */
 export const googleapis = 'https://fonts.googleapis.com'
@@ -11,7 +11,7 @@ export const gstatic = 'https://fonts.gstatic.com'
 export const font = `${googleapis}/css2?family=Readex+Pro:wght@200;400;600&display=swap`
 
 /* vitepress head */
-export const ogUrl = 'https://code05.com/'
+export const ogUrl = 'https://usepy.code05.com/'
 export const ogImage = `${ogUrl}og.png`
 
 /* GitHub and social links */
