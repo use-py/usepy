@@ -13,27 +13,27 @@ def test_ad_dict():
 
 
 @pytest.mark.parametrize(
-    "input, expected",
+    "input, az, expected",
     [
-        ({"c": 3, "a": 1, "b": 2}, {"a": 1, "b": 2, "c": 3}),
-        ({"a": 1, "b": 2, "c": 3}, {"a": 1, "b": 2, "c": 3}),
+        ({"c": 3, "a": 1, "b": 2}, True, ["a", "b", "c"]),
+        ({"a": 1, "b": 2, "c": 3}, False, ["c", "b", "a"]),
     ],
 )
-def test_sort_by_key(input, expected):
-    sorted_d = sort_by_key(input)
-    assert sorted_d == expected
+def test_sort_by_key(input, az, expected):
+    sorted_d = sort_by_key(input, az)
+    assert list(sorted_d.keys()) == expected
 
 
 @pytest.mark.parametrize(
-    "input, expected",
+    "input, az, expected",
     [
-        ({"c": 3, "a": 1, "b": 2}, {"a": 1, "b": 2, "c": 3}),
-        ({"a": 1, "b": 2, "c": 3}, {"a": 1, "b": 2, "c": 3}),
+        ({"c": 3, "a": 1, "b": 2}, True, ["a", "b", "c"]),
+        ({"a": 1, "b": 2, "c": 3}, False, ["c", "b", "a"]),
     ],
 )
-def test_sort_by_value(input, expected):
-    sorted_d = sort_by_value(input)
-    assert sorted_d == expected
+def test_sort_by_value(input, az, expected):
+    sorted_d = sort_by_value(input, az)
+    assert list(sorted_d.keys()) == expected
 
 
 @pytest.mark.parametrize(

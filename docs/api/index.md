@@ -2,6 +2,5 @@
 outline: deep
 ---
 
-# Data
+# 方法总览
 
-python中的数据结构的功能扩展
