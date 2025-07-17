@@ -1,9 +1,9 @@
-from typing import TypeVar, Sequence, Set
+from typing import List, TypeVar, Sequence, Set
 
 T = TypeVar('T')
 
 
-def difference(first_lst: Sequence[T], second_lst: Sequence[T]) -> list[T]:
+def difference(first_lst: Sequence[T], second_lst: Sequence[T]) -> List[T]:
     """
     Computes the difference between two sequences.
 
