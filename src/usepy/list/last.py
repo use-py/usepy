@@ -1,5 +1,5 @@
 from typing import TypeVar, Sequence
-from typing_ import Union
+from usepy.typing_ import Union
 
 T = TypeVar("T")
 
