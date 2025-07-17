@@ -1,16 +1,19 @@
 from typing import TypeVar, Sequence
+from typing_ import Union
+
+
 
 T = TypeVar("T")
 
 
-def first(array: Sequence[T]) -> T | None:
+def first(array: Sequence[T]) -> Union[T, None]:
     """
     Gets the first element of `array`.
 
     :param array: The array to query.
     :type array: Sequence[T]
     :return: Returns the first element of `array`.
-    :rtype: T | None
+    :rtype: Union[T, None]
 
     :Example:
 
