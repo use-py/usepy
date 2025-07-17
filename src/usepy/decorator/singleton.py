@@ -1,6 +1,6 @@
 import functools
 import threading
-from typing import Any, Callable, Type, TypeVar
+from typing import Any, Callable, Dict, Type, TypeVar
 
 T = TypeVar("T")
 
@@ -31,7 +31,7 @@ def singleton(cls: Type[T]) -> Callable[..., T]:
         >>> print(instance1 is instance2)
         True
     """
-    _instances: dict[Type[T], T] = {}
+    _instances: Dict[Type[T], T] = {}
     _lock = threading.Lock()
 
     @functools.wraps(cls)

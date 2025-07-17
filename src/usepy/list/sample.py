@@ -1,11 +1,11 @@
 import random
-from typing import TypeVar, Sequence
+from typing import List, TypeVar, Sequence
 from usepy.typing_ import Union
 
 T = TypeVar("T")
 
 
-def sample(arr: Sequence[T], count: int = 1) -> Union[T, list[T]]:
+def sample(arr: Sequence[T], count: int = 1) -> Union[T, List[T]]:
     """
     Returns a random element from a sequence.
 
@@ -17,7 +17,7 @@ def sample(arr: Sequence[T], count: int = 1) -> Union[T, list[T]]:
         count (int, optional): The number of elements to sample. Defaults to 1.
 
     Returns:
-        Union[T, list[T]]: A random element from the sequence.
+        Union[T, List[T]]: A random element from the sequence.
 
     Example:
         >>> sample([1, 2, 3, 4, 5])

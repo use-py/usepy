@@ -1,10 +1,10 @@
-from typing import TypeVar, Iterable
+from typing import List, TypeVar, Iterable
 from usepy.list.uniq import uniq
 
 T = TypeVar('T')
 
 
-def union(*lsts: Iterable[T]) -> list[T]:
+def union(*lsts: Iterable[T]) -> List[T]:
     """
     Creates a list of unique values from all given iterables.
 
@@ -15,7 +15,7 @@ def union(*lsts: Iterable[T]) -> list[T]:
         *lsts (Iterable[T]): The iterables to merge and filter for unique values.
 
     Returns:
-        list[T]: A new list of unique values.
+        List[T]: A new list of unique values.
 
     Example:
         >>> array1 = [1, 2, 3]

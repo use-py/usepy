@@ -1,16 +1,16 @@
-from typing import TypeVar
+from typing import List, TypeVar
 
 from usepy.list.flatten import flatten
 
 T = TypeVar("T")
 
 
-def flatten_deep(lst: list[T]) -> list:
+def flatten_deep(lst: List[T]) -> List:
     """
     Flattens all depths of a nested array.
 
     Args:
-        lst (list[T]): The array to flatten.
+        lst (List[T]): The array to flatten.
 
     Returns:
         list: A new array that has been flattened.

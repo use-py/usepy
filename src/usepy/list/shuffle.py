@@ -1,10 +1,10 @@
-from typing import TypeVar, Sequence
+from typing import List, TypeVar, Sequence
 import random
 
 T = TypeVar('T')
 
 
-def shuffle(arr: Sequence[T]) -> list[T]:
+def shuffle(arr: Sequence[T]) -> List[T]:
     """
     Randomizes the order of elements in a sequence using the Fisher-Yates algorithm.
 
@@ -14,7 +14,7 @@ def shuffle(arr: Sequence[T]) -> list[T]:
         arr (Sequence[T]): The sequence to shuffle.
 
     Returns:
-        list[T]: A new list with its elements shuffled in random order.
+        List[T]: A new list with its elements shuffled in random order.
 
     Examples:
         >>> arr = [1, 2, 3, 4, 5]

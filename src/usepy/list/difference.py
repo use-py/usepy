@@ -19,7 +19,7 @@ def difference(first_lst: Sequence[T], second_lst: Sequence[T]) -> List[T]:
         that element will be excluded from the result.
 
     Returns:
-        list[T]: A new sequence containing the elements that are present in the first sequence but not
+        List[T]: A new sequence containing the elements that are present in the first sequence but not
         in the second sequence.
 
     Example:

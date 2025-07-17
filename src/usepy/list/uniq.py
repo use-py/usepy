@@ -1,9 +1,9 @@
-from typing import TypeVar, Sequence
+from typing import List, TypeVar, Sequence
 
 T = TypeVar('T')
 
 
-def uniq(lst: Sequence[T]) -> list[T]:
+def uniq(lst: Sequence[T]) -> List[T]:
     """
     Returns a new list containing only the unique elements from the input sequence.
 
@@ -11,7 +11,7 @@ def uniq(lst: Sequence[T]) -> list[T]:
         lst (Sequence[T]): The input sequence.
 
     Returns:
-        list[T]: A new list containing only the unique elements from the input sequence.
+        List[T]: A new list containing only the unique elements from the input sequence.
 
     Example:
         >>> uniq([1, 2, 3, 2, 1])

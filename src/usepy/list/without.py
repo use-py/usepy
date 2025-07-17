@@ -1,9 +1,9 @@
-from typing import TypeVar, Sequence, Set
+from typing import List, TypeVar, Sequence, Set
 
 T = TypeVar('T')
 
 
-def without(array: Sequence[T], *values: T) -> list[T]:
+def without(array: Sequence[T], *values: T) -> List[T]:
     """
     Creates a new list that excludes all specified values from the given array.
 
@@ -15,7 +15,7 @@ def without(array: Sequence[T], *values: T) -> list[T]:
         *values (T): The values to exclude.
 
     Returns:
-        list[T]: A new list without the specified values.
+        List[T]: A new list without the specified values.
 
     Examples:
         >>> without([1, 2, 3, 4, 5], 2, 4)

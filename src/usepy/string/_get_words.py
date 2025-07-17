@@ -1,4 +1,4 @@
-from typing import TypeVar
+from typing import List, TypeVar
 import re
 
 T = TypeVar('T', bound=str)
@@ -6,7 +6,7 @@ T = TypeVar('T', bound=str)
 CASE_SPLIT_PATTERN = re.compile(r'[A-Z]?[a-z]+|[0-9]+|[A-Z]+(?![a-z])', re.VERBOSE)
 
 
-def get_words(string: T) -> list[T]:
+def get_words(string: T) -> List[T]:
     """
     Splits a string into words based on whitespace and non-alphanumeric characters.
 
@@ -14,7 +14,7 @@ def get_words(string: T) -> list[T]:
         string (str): The input string to be split into words.
 
     Returns:
-        list[str]: A list of words extracted from the input string.
+        List[str]: A list of words extracted from the input string.
 
     Example:
         >>> get_words('hello world')

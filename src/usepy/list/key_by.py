@@ -1,10 +1,10 @@
-from typing import Callable, TypeVar, Dict
+from typing import Callable, List, TypeVar, Dict
 
 T = TypeVar('T')
 K = TypeVar('K')
 
 
-def key_by(lst: list[T], get_key_from_item: Callable[[T], K]) -> Dict[K, T]:
+def key_by(lst: List[T], get_key_from_item: Callable[[T], K]) -> Dict[K, T]:
     """
     Maps each element of a list based on a provided key-generating function.
 
@@ -14,7 +14,7 @@ def key_by(lst: list[T], get_key_from_item: Callable[[T], K]) -> Dict[K, T]:
     as the value.
 
     Args:
-        lst (list[T]): The list of elements to be mapped.
+        lst (List[T]): The list of elements to be mapped.
         get_key_from_item (Callable[[T], K]): A function that generates a key from an element.
 
     Returns:
