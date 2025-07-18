@@ -3,7 +3,7 @@ from typing import List, TypeVar, Sequence
 T = TypeVar('T')
 
 
-def uniq(lst: Sequence[T]) -> List[T]:
+def uniq(lst: Sequence[T], care_order: bool = True) -> List[T]:
     """
     Returns a new list containing only the unique elements from the input sequence.
 
@@ -17,4 +17,13 @@ def uniq(lst: Sequence[T]) -> List[T]:
         >>> uniq([1, 2, 3, 2, 1])
         [1, 2, 3]
     """
-    return list(set(lst))
+    if care_order:
+        seen = set()
+        result = []
+        for item in lst:
+            if item not in seen:
+                seen.add(item)
+                result.append(item)
+        return result
+    else:
+        return list(set(lst))

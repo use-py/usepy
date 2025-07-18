@@ -147,14 +147,14 @@ def test_without(lst, items, expected):
 
 
 @pytest.mark.parametrize(
-    "lst, expected",
+    "lst, case_order, expected",
     [
-        ([2, 1, 2], [1, 2]),
-        ([1, 2, 3, 4, 5], [1, 2, 3, 4, 5]),
+        ([2, 1, 2], False, [1, 2]),
+        ([1, 4, 1, 2, 5], True, [1, 4, 2, 5]),
     ],
 )
-def test_uniq(lst, expected):
-    assert uniq(lst) == expected
+def test_uniq(lst, case_order, expected):
+    assert uniq(lst, case_order) == expected
 
 
 @pytest.mark.parametrize(

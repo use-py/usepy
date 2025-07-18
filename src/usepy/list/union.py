@@ -25,4 +25,4 @@ def union(*lsts: Iterable[T]) -> List[T]:
         [1, 2, 3, 4, 5, 6, 7]
     """
     merged = [item for arr in lsts for item in arr]
-    return uniq(merged)
+    return uniq(merged, False)

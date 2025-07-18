@@ -24,7 +24,4 @@ def some(array: List[T], fn: Callable[[T], bool]) -> bool:
         >>> some(nums, is_negative)
         False
     """
-    from functools import reduce
-    from operator import or_
-
-    return reduce(or_, [fn(element) for element in array])
+    return any(fn(element) for element in array)
