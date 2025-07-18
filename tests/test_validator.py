@@ -17,4 +17,5 @@ def test_is_url():
     assert is_url("http://localhost:8000")
     assert not is_url("not a url")
     assert not is_url("mailto:user@example.com")
+    assert is_url("mailto:user@example.com", allowed_schemes=["mailto"])
     assert not is_url("ftp://invalid-scheme.com")
