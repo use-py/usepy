@@ -9,7 +9,21 @@ def to_list(value: Any) -> list:
 
     Returns:
         list: The list value.
+
+    Examples:
+        >>> to_list(None)
+        []
+        >>> to_list("abc")
+        ['a', 'b', 'c']
+        >>> to_list((1, 2))
+        [1, 2]
+        >>> to_list({1, 2})
+        [1, 2]
+        >>> to_list(1)
+        [1]
     """
+    if value is None:
+        return []
     if isinstance(value, list):
         return value
     if isinstance(value, (str, bytes)):

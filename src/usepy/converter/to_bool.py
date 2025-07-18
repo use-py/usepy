@@ -19,9 +19,22 @@ def to_bool(value: Any) -> bool:
         True
         >>> to_bool("t")
         True
+        >>> to_bool(1)
+        True
+        >>> to_bool(0)
+        False
+        >>> to_bool("no")
+        False
+        >>> to_bool(None)
+        False
     """
+    if value is None:
+        return False
     if isinstance(value, bool):
         return value
+    if isinstance(value, (int, float)):
+        return bool(value)
     if isinstance(value, str):
-        return value.lower() in ("yes", "true", "t", "y", "1")
+        value = value.lower().strip()
+        return value in ("yes", "true", "t", "y", "1", "on", "enabled")
     return bool(value)
