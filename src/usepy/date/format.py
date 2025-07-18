@@ -1,7 +1,8 @@
 from datetime import datetime
+from typing import Optional
 
 
-def format(dt: datetime, fmt=None) -> str:
+def format(dt: datetime, fmt: Optional[str] = None) -> str:
     """format date
 
     Args:

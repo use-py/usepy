@@ -1,8 +1,9 @@
 from datetime import datetime
 from itertools import chain
+from typing import Optional
 
 
-def parse(time_str: str, fmt=None) -> datetime:
+def parse(time_str: str, fmt: Optional[str] = None) -> datetime:
     """parse date
 
     Args:
