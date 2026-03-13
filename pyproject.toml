@@ -10,11 +10,8 @@ packages = [
 ]
 
 [tool.poetry.dependencies]
-python = "^3.7"
-typing-extensions = [
-    { version = "^4.0.0", python = ">=3.6,<3.7" },
-    { version = "^4.5.0", python = ">=3.7" }
-]
+python = "^3.8"
+typing-extensions = "^4.5.0"
 
 
 [tool.poetry.group.test.dependencies]
