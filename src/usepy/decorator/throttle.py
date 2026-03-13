@@ -28,7 +28,11 @@ class Throttle:
 
         @wraps(func)
         async def async_wrapper(*args, **kwargs):
-            return wrapper(*args, **kwargs)
+            current_time = time.time()
+            if current_time - self.last_called >= self.delay:
+                result = await func(*args, **kwargs)
+                self.last_called = current_time
+                return result
 
         wrapper_func = async_wrapper if asyncio.iscoroutinefunction(func) else wrapper
 
