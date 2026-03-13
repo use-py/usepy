@@ -24,9 +24,11 @@ ruff = "*"
 pre-commit = "*"
 pre-commit-hooks = "*"
 
-[tool.ruff]
+[tool.ruff.lint]
 ignore = [
     "E501", # line too long, handled by black
+    "F403", # star imports
+    "F405", # may be undefined from star imports
 ]
 
 [build-system]

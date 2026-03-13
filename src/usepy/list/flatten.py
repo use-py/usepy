@@ -1,4 +1,4 @@
-from typing import TypeVar, List, Union, Optional
+from typing import TypeVar, List, Union
 
 T = TypeVar("T")
 D = TypeVar("D", int, float)
