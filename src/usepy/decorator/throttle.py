@@ -20,7 +20,6 @@ class Throttle:
     def __call__(self, func):
         @wraps(func)
         def wrapper(*args, **kwargs):
-            nonlocal self
             current_time = time.time()
             if current_time - self.last_called >= self.delay:
                 result = func(*args, **kwargs)

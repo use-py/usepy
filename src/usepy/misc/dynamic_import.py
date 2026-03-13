@@ -23,7 +23,7 @@ def dynamic_import(module_string: str):
         function_name = ""
         module = importlib.import_module(module_string)
     except Exception as e:
-        raise ImportError(f"无法导入 {module_string}")
+        raise ImportError(f"无法导入 {module_string}: {e}") from e
 
     function = getattr(module, function_name, None)
     return module, function
