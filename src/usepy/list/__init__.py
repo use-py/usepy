@@ -16,6 +16,14 @@ from .zip_tuple import zip_tuple
 from .zip_dict import zip_dict
 from .first import first
 from .last import last
+from .group_by import group_by
+from .find import find
+from .find_index import find_index
+from .intersection import intersection
+from .partition import partition
+from .take import take, take_right
+from .drop import drop, drop_right
+from .nth import nth
 
 
 __all__ = [
@@ -37,4 +45,15 @@ __all__ = [
     "zip_dict",
     "first",
     "last",
+    # New functions
+    "group_by",
+    "find",
+    "find_index",
+    "intersection",
+    "partition",
+    "take",
+    "take_right",
+    "drop",
+    "drop_right",
+    "nth",
 ]
